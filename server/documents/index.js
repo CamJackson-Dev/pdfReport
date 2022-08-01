@@ -1,6 +1,6 @@
 module.exports = ({ name, price1, price2, receiptId }) => {
-    const today = new Date();
-return `
+  const today = new Date();
+  return `
     <!doctype html>
     <html>
        <head>
@@ -86,10 +86,12 @@ return `
                    <td colspan="2">
                       <table>
                          <tr>
-                            <td class="title"><img  src="https://i2.wp.com/cleverlogos.co/wp-content/uploads/2018/05/reciepthound_1.jpg?fit=800%2C600&ssl=1"
+                            <td class="title"><img src="https://firebasestorage.googleapis.com/v0/b/australasia-ca07e.appspot.com/o/quantum-therapy%2Flogo%2Flogo-bg.jpg?alt=media&token=58a588a4-4a9d-48d2-9e7b-7125f8690616"
                                style="width:100%; max-width:156px;"></td>
                             <td>
-                               Datum: ${`${today.getDate()}. ${today.getMonth() + 1}. ${today.getFullYear()}.`}
+                               Date: ${`${today.getDate()}. ${
+                                 today.getMonth() + 1
+                               }. ${today.getFullYear()}.`}
                             </td>
                          </tr>
                       </table>
@@ -123,7 +125,9 @@ return `
                 </tr>
              </table>
              <br />
-             <h1 class="justify-center">Total price: ${parseInt(price1) + parseInt(price2)}$</h1>
+             <h1 class="justify-center">Total price: $${
+               parseInt(price1) + parseInt(price2)
+             }</h1>
           </div>
        </body>
     </html>
