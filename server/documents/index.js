@@ -1,4 +1,4 @@
-module.exports = ({ name, price1, price2, receiptId }) => {
+module.exports = ({ firstName, lastName, price1, price2 }) => {
   const today = new Date();
   return `
     <!doctype html>
@@ -45,7 +45,7 @@ module.exports = ({ name, price1, price2, receiptId }) => {
              color: #333;
              }
              .invoice-box table tr.information table td {
-             padding-bottom: 40px;
+             padding-bottom: 15px;
              }
              .invoice-box table tr.heading td {
              background: #eee;
@@ -101,13 +101,15 @@ module.exports = ({ name, price1, price2, receiptId }) => {
                    <td colspan="2">
                       <table>
                          <tr>
-                            <td>
-                               Customer name: ${name}
-                            </td>
-                            <td>
-                               Receipt number: ${receiptId}
-                            </td>
+                         <td>
+                           First Name: ${firstName}
+                         </td>
                          </tr>
+                         <tr>
+                         <td>
+                           Surname: ${lastName}
+                         </td>
+                        </tr>
                       </table>
                    </td>
                 </tr>
@@ -125,9 +127,9 @@ module.exports = ({ name, price1, price2, receiptId }) => {
                 </tr>
              </table>
              <br />
-             <h1 class="justify-center">Total price: $${
+             <h5 class="justify-center">Total price: $${
                parseInt(price1) + parseInt(price2)
-             }</h1>
+             }</h5>
           </div>
        </body>
     </html>
