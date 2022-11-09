@@ -6,8 +6,8 @@ import "./App.css";
 
 class App extends Component {
   state = {
-    name: "",
-    receiptId: 0,
+    firstName: "",
+    lastName: "",
     price1: 0,
     price2: 0,
   };
@@ -31,14 +31,14 @@ class App extends Component {
       <div className="App">
         <input
           type="text"
-          placeholder="Name"
-          name="name"
+          placeholder="Surname"
+          name="lastName"
           onChange={this.handleChange}
         />
         <input
-          type="number"
-          placeholder="Receipt ID"
-          name="receiptId"
+          type="text"
+          placeholder="First Name"
+          name="firstName"
           onChange={this.handleChange}
         />
         <input
