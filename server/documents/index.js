@@ -1,4 +1,4 @@
-module.exports = ({ firstName, lastName, bdate, sex }) => {
+module.exports = ({ firstName, lastName, bdate, sex, referral }) => {
   const today = new Date();
   return `
     <!doctype html>
@@ -44,9 +44,7 @@ module.exports = ({ firstName, lastName, bdate, sex }) => {
              line-height: 45px;
              color: #333;
              }
-             .invoice-box table tr.information table td {
-             padding-bottom: 15px;
-             }
+             
              .invoice-box table tr.heading td {
              background: #eee;
              border-bottom: 1px solid #ddd;
@@ -117,16 +115,14 @@ module.exports = ({ firstName, lastName, bdate, sex }) => {
                    </td>
                 </tr>
                 <tr class="heading">
-                   <td>Bought items:</td>
-                   <td>Price</td>
+                   <td>COMMUNITY NURSING BLADDER ASSESSMENT</td>
+                </tr>
+                   <td>Sex:${sex}</td>
+                   <td>Referred By:${referral}</td>
                 </tr>
                 <tr class="item">
-                   <td>Sex:</td>
-                   <td>${sex}$</td>
-                </tr>
-                <tr class="item">
-                   <td>Second item:</td>
-                   <td>${sex}$</td>
+                   <td>Referred By:${referral}</td>
+                   <td>${referral}</td>
                 </tr>
              </table>
              <br />
