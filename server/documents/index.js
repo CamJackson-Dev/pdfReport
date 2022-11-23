@@ -1,4 +1,4 @@
-module.exports = ({ firstName, lastName, price1, price2 }) => {
+module.exports = ({ firstName, lastName, bdate, sex, referral }) => {
   const today = new Date();
   return `
     <!doctype html>
@@ -44,9 +44,7 @@ module.exports = ({ firstName, lastName, price1, price2 }) => {
              line-height: 45px;
              color: #333;
              }
-             .invoice-box table tr.information table td {
-             padding-bottom: 15px;
-             }
+             
              .invoice-box table tr.heading td {
              background: #eee;
              border-bottom: 1px solid #ddd;
@@ -104,32 +102,31 @@ module.exports = ({ firstName, lastName, price1, price2 }) => {
                          <td>
                            First Name: ${firstName}
                          </td>
+                         <td>
+                         DOB: ${bdate}
+                       </td>
                          </tr>
                          <tr>
                          <td>
-                           Surname: ${lastName}
-                         </td>
+                         Surname: ${lastName}
+                      </td>
                         </tr>
                       </table>
                    </td>
                 </tr>
                 <tr class="heading">
-                   <td>Bought items:</td>
-                   <td>Price</td>
+                   <td>COMMUNITY NURSING BLADDER ASSESSMENT</td>
+                </tr>
+                   <td>Sex:${sex}</td>
+                   <td>Referred By:${referral}</td>
                 </tr>
                 <tr class="item">
-                   <td>First item:</td>
-                   <td>${price1}$</td>
-                </tr>
-                <tr class="item">
-                   <td>Second item:</td>
-                   <td>${price2}$</td>
+                   <td>Referred By:${referral}</td>
+                   <td>${referral}</td>
                 </tr>
              </table>
              <br />
-             <h5 class="justify-center">Total price: $${
-               parseInt(price1) + parseInt(price2)
-             }</h5>
+            
           </div>
        </body>
     </html>
