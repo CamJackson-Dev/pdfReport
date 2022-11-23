@@ -111,7 +111,7 @@ class App extends Component {
             <option value="Male">Male</option>
             <option value="Female">Female</option>
           </select>
-          {/* <div class="item">
+          <div class="item">
             <label for="referral">
               Referred By<span>*</span>
             </label>
@@ -401,10 +401,11 @@ class App extends Component {
                 />
                 <label for="radio_6" class="radio">
                   <span>Dr. Smith</span>
-                </label> 
+                </label>
               </div>
             </div>
-          </div>*/}
+          </div>
+          */}
         </fieldset>
         <div class="btn-block">
           {/* <button type="submit" href="/">
