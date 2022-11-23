@@ -1,4 +1,4 @@
-module.exports = ({ firstName, lastName, price1, price2 }) => {
+module.exports = ({ firstName, lastName, bdate, sex }) => {
   const today = new Date();
   return `
     <!doctype html>
@@ -104,11 +104,14 @@ module.exports = ({ firstName, lastName, price1, price2 }) => {
                          <td>
                            First Name: ${firstName}
                          </td>
+                         <td>
+                         DOB: ${bdate}
+                       </td>
                          </tr>
                          <tr>
                          <td>
-                           Surname: ${lastName}
-                         </td>
+                         Surname: ${lastName}
+                      </td>
                         </tr>
                       </table>
                    </td>
@@ -118,18 +121,16 @@ module.exports = ({ firstName, lastName, price1, price2 }) => {
                    <td>Price</td>
                 </tr>
                 <tr class="item">
-                   <td>First item:</td>
-                   <td>${price1}$</td>
+                   <td>Sex:</td>
+                   <td>${sex}$</td>
                 </tr>
                 <tr class="item">
                    <td>Second item:</td>
-                   <td>${price2}$</td>
+                   <td>${sex}$</td>
                 </tr>
              </table>
              <br />
-             <h5 class="justify-center">Total price: $${
-               parseInt(price1) + parseInt(price2)
-             }</h5>
+            
           </div>
        </body>
     </html>
