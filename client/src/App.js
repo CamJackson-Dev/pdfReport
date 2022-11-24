@@ -10,6 +10,7 @@ class App extends Component {
     lastName: "",
     bdate: 0,
     sex: "undefined",
+    referral: "",
   };
 
   handleChange = ({ target: { value, name } }) =>
@@ -123,13 +124,13 @@ class App extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <div class="item">
+          {/* <div class="item">
             <label for="instructions">
               Presenting problems, previous treatment & management strategies:
             </label>
             <textarea id="instructions" rows="5" />
           </div>
-          <div class="question">
+           <div class="question">
             <label>Gradual</label>
             <div class="question-answer">
               <div>
