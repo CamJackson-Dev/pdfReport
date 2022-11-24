@@ -11,6 +11,7 @@ class App extends Component {
     bdate: 0,
     sex: "undefined",
     referral: "",
+    presenting_problems: "",
   };
 
   handleChange = ({ target: { value, name } }) =>
@@ -21,6 +22,7 @@ class App extends Component {
       .post("/create-pdf", this.state)
       .then(() => axios.get("fetch-pdf", { responseType: "blob" }))
       .then((res) => {
+        console.log(res.data);
         const pdfBlob = new Blob([res.data], { type: "application/pdf" });
 
         saveAs(pdfBlob, "pt-report.pdf");
@@ -30,100 +32,396 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <input
-          type="text"
-          placeholder="Surname"
-          name="lastName"
-          onChange={this.handleChange}
-        />
-        <input
-          type="text"
-          placeholder="First Name!"
-          name="firstName"
-          onChange={this.handleChange}
-        />
-        <input
-          type="number"
-          placeholder="Price 1"
-          name="price1"
-          onChange={this.handleChange}
-        />
-        <input
-          type="number"
-          placeholder="Price 2"
-          name="price2"
-          onChange={this.handleChange}
-        /> */}
-        {/* <div class="testbox"> */}
         <div class="banner">
-          <h1 class="assessmentHeading">
+          <h3 class="assessmentHeading">
             COMMUNITY NURSING BLADDER ASSESSMENT
-          </h1>
+          </h3>
         </div>
         <br />
         <fieldset>
-          <legend>Patient Information</legend>
-          <div class="item">
-            <label for="fname">
-              First Name<span>*</span>
-            </label>
-            <input
-              id="fname"
-              type="text"
-              name="firstName"
-              required
-              onChange={this.handleChange}
-            />
+          <div class="form-row">
+            <div class="form-group col-md-3 item">
+              <label for="fname">
+                First Name<span>*</span>
+              </label>
+              <input
+                class="form-control"
+                id="fname"
+                type="text"
+                name="firstName"
+                required
+                onChange={this.handleChange}
+              />
+            </div>
+            <div class="form-group col-md-3 item">
+              <label for="lastName">
+                Last Name<span>*</span>
+              </label>
+              <input
+                class="form-control"
+                id="lname"
+                type="text"
+                name="lastName"
+                required
+                onChange={this.handleChange}
+              />
+            </div>
+            <div class="form-group col-md-3 item">
+              <label for="bdate">
+                DOB<span>*</span>
+              </label>
+              <input
+                class="form-control"
+                id="bdate"
+                type="date"
+                name="bdate"
+                required
+                onChange={this.handleChange}
+              />
+              <i class="fas fa-calendar-alt" />
+            </div>
+            <div class="form-group col-md-3 item">
+              <label for="sex">
+                Sex <span>*</span>
+              </label>
+              <select
+                name="sex"
+                class="form-control"
+                value={this.state.value}
+                onChange={this.handleChange}
+              >
+                <option selected value="Undefined" disabled />
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
           </div>
-          <div class="item">
-            <label for="lastName">
-              Last Name<span>*</span>
-            </label>
-            <input
-              id="lname"
-              type="text"
-              name="lastName"
-              required
-              onChange={this.handleChange}
-            />
+          <div class="form-row">
+            <div class="form-group col-md-3 item">
+              <label for="referral">
+                Referred By<span>*</span>
+              </label>
+              <input
+                class="form-control"
+                id="referral"
+                type="text"
+                name="referral"
+                required
+                onChange={this.handleChange}
+              />
+            </div>
           </div>
-          <div class="item">
-            <label for="bdate">
-              DOB <span>*</span>
-            </label>
-            <input
-              id="bdate"
-              type="date"
-              name="bdate"
-              required
-              onChange={this.handleChange}
-            />
-            <i class="fas fa-calendar-alt" />
+          <div class="form-row">
+            <div class="form-group col-md-12 item">
+              <label for="presenting_problems">
+                Presenting problems, previous treatment & management strategies:
+              </label>
+              <textarea
+                class="form-control"
+                rows="5"
+                id="presenting_problems"
+                name="presenting_problems"
+                required
+                onChange={this.handleChange}
+              />
+            </div>
           </div>
-          <label for="sex">
-            Sex <span>*</span>
-          </label>
-          <select
-            name="sex"
-            value={this.state.value}
-            onChange={this.handleChange}
-          >
-            <option selected value="Undefined" disabled />
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-          </select>
-          <div class="item">
-            <label for="referral">
-              Referred By<span>*</span>
-            </label>
-            <input
-              id="referral"
-              type="text"
-              name="referral"
-              required
-              onChange={this.handleChange}
-            />
+          <h6 class="heading">Is Condition:</h6>
+
+          <div class="form-row">
+            <div class="form-group col-md-3 item">
+              <label for="gradual">
+                Gradual <span>*</span>
+              </label>
+              <select
+                name="gradual"
+                class="form-control"
+                value={this.state.value}
+                onChange={this.handleChange}
+              >
+                <option selected value="Undefined" disabled />
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div class="form-group col-md-3 item">
+              <label for="sudden">
+                Sudden <span>*</span>
+              </label>
+              <select
+                name="sudden"
+                class="form-control"
+                value={this.state.value}
+                onChange={this.handleChange}
+              >
+                <option selected value="Undefined" disabled />
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div class="form-group col-md-3 item">
+              <label for="onset">
+                Onset <span>*</span>
+              </label>
+              <select
+                name="onset"
+                class="form-control"
+                value={this.state.value}
+                onChange={this.handleChange}
+              >
+                <option selected value="Undefined" disabled />
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div class="form-group col-md-3 item">
+              <label for="worsening">
+                Worsening <span>*</span>
+              </label>
+              <select
+                name="worsening"
+                class="form-control"
+                value={this.state.value}
+                onChange={this.handleChange}
+              >
+                <option selected value="Undefined" disabled />
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
           </div>
+          <div class="form-row">
+            <div class="form-group col-md-12 item">
+              <label for="presenting_problems">
+                How does your bladder problem affect your life:
+              </label>
+              <textarea
+                class="form-control"
+                rows="5"
+                id="how_affects_life"
+                name="how_affects_life"
+                required
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-12 item">
+              <label for="presenting_problems">Client’s treatment goal:</label>
+              <textarea
+                class="form-control"
+                rows="5"
+                id="treatment_goal:"
+                name="treatment_goal"
+                required
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+          <h6 class="heading">Medical History:</h6>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input
+                  type="checkbox"
+                  aria-label="Checkbox for following text input"
+                />
+              </div>
+            </div>
+            <label for="presenting_problems">Client’s treatment goal:</label>
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input
+                  type="checkbox"
+                  aria-label="Checkbox for following text input"
+                />
+              </div>
+            </div>
+            <label for="presenting_problems">Client’s treatment goal:</label>
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input
+                  type="checkbox"
+                  aria-label="Checkbox for following text input"
+                />
+              </div>
+            </div>
+            <label for="presenting_problems">Client’s treatment goal:</label>
+          </div>
+          <li class="form-line" data-type="control_checkbox" id="id_39">
+            <label
+              class="form-label form-label-left form-label-auto"
+              id="label_39"
+              for="input_39"
+            />
+            <div id="cid_39" class="form-input">
+              <div
+                class="form-single-column"
+                role="group"
+                aria-labelledby="label_39"
+                data-component="checkbox"
+              >
+                <span class="form-checkbox-item">
+                  <span class="dragger-item" />
+                  <input
+                    type="checkbox"
+                    aria-describedby="label_39"
+                    class="form-checkbox"
+                    id="input_39_0"
+                    name="q39_input39[]"
+                    value="Heart conditions"
+                  />
+                  <label id="label_input_39_0" for="input_39_0">
+                    Heart conditions
+                  </label>
+                </span>
+                <span class="form-checkbox-item">
+                  <span class="dragger-item" />
+                  <input
+                    type="checkbox"
+                    aria-describedby="label_39"
+                    class="form-checkbox"
+                    id="input_39_1"
+                    name="q39_input39[]"
+                    value="Lung/breathing problems, e.g. Asthma"
+                  />
+                  <label id="label_input_39_1" for="input_39_1">
+                    Lung/breathing problems, e.g. Asthma
+                  </label>
+                </span>
+                <span class="form-checkbox-item">
+                  <span class="dragger-item" />
+                  <input
+                    type="checkbox"
+                    aria-describedby="label_39"
+                    class="form-checkbox"
+                    id="input_39_2"
+                    name="q39_input39[]"
+                    value="Diabetes"
+                  />
+                  <label id="label_input_39_2" for="input_39_2">
+                    Diabetes
+                  </label>
+                </span>
+                <span class="form-checkbox-item">
+                  <span class="dragger-item" />
+                  <input
+                    type="checkbox"
+                    aria-describedby="label_39"
+                    class="form-checkbox"
+                    id="input_39_3"
+                    name="q39_input39[]"
+                    value="Epilepsy"
+                  />
+                  <label id="label_input_39_3" for="input_39_3">
+                    Epilepsy
+                  </label>
+                </span>
+                <span class="form-checkbox-item">
+                  <span class="dragger-item" />
+                  <input
+                    type="checkbox"
+                    aria-describedby="label_39"
+                    class="form-checkbox"
+                    id="input_39_4"
+                    name="q39_input39[]"
+                    value="Major Surgery"
+                  />
+                  <label id="label_input_39_4" for="input_39_4">
+                    Major Surgery
+                  </label>
+                </span>
+                <span class="form-checkbox-item">
+                  <span class="dragger-item" />
+                  <input
+                    type="checkbox"
+                    aria-describedby="label_39"
+                    class="form-checkbox"
+                    id="input_39_5"
+                    name="q39_input39[]"
+                    value="Rheumatoid Arthritis (either yourself or a family member)"
+                  />
+                  <label id="label_input_39_5" for="input_39_5">
+                    Rheumatoid Arthritis (either yourself or a family member)
+                  </label>
+                </span>
+                <span class="form-checkbox-item">
+                  <span class="dragger-item" />
+                  <input
+                    type="checkbox"
+                    aria-describedby="label_39"
+                    class="form-checkbox"
+                    id="input_39_6"
+                    name="q39_input39[]"
+                    value="Fractures"
+                  />
+                  <label id="label_input_39_6" for="input_39_6">
+                    Fractures
+                  </label>
+                </span>
+                <span class="form-checkbox-item">
+                  <span class="dragger-item" />
+                  <input
+                    type="checkbox"
+                    aria-describedby="label_39"
+                    class="form-checkbox"
+                    id="input_39_7"
+                    name="q39_input39[]"
+                    value="Cancer (past or current)"
+                  />
+                  <label id="label_input_39_7" for="input_39_7">
+                    Cancer (past or current)
+                  </label>
+                </span>
+                <span class="form-checkbox-item">
+                  <span class="dragger-item" />
+                  <input
+                    type="checkbox"
+                    aria-describedby="label_39"
+                    class="form-checkbox"
+                    id="input_39_8"
+                    name="q39_input39[]"
+                    value="Thyroid problems"
+                  />
+                  <label id="label_input_39_8" for="input_39_8">
+                    Thyroid problems
+                  </label>
+                </span>
+                <span class="form-checkbox-item">
+                  <span class="dragger-item" />
+                  <input
+                    type="checkbox"
+                    aria-describedby="label_39"
+                    class="form-checkbox"
+                    id="input_39_9"
+                    name="q39_input39[]"
+                    value="None of the above"
+                  />
+                  <label id="label_input_39_9" for="input_39_9">
+                    None of the above
+                  </label>
+                </span>
+              </div>
+            </div>
+          </li>
+          {/* <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputCity">City</label>
+              <input type="text" class="form-control" id="inputCity" />
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputState">State</label>
+              <select id="inputState" class="form-control">
+                <option selected>Choose...</option>
+                <option>...</option>
+              </select>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputZip">Zip</label>
+              <input type="text" class="form-control" id="inputZip" />
+            </div>
+          </div> */}
+
           {/* <div class="item">
             <label for="instructions">
               Presenting problems, previous treatment & management strategies:

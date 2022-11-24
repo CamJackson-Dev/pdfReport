@@ -105,6 +105,10 @@ textarea {
   width: calc(100% - 12px);
   padding: 5px;
 }
+
+.heading {
+  margin-left: 3%;
+}
 .item:hover p,
 .item:hover i,
 .question:hover p,
@@ -216,6 +220,10 @@ button {
 }
 button:hover {
   background: #a3c2c2;
+}
+
+.form-row {
+  margin: 2%;
 }
 @media (min-width: 568px) {
   .name-item,
