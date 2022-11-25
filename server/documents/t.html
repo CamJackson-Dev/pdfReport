@@ -93,9 +93,36 @@
     }
 
     .flex {
+      display: -webkit-box;
       display: flex;
       justify-content: center;
+      -webkit-box-pack: center;
+
       align-items: center;
+    }
+
+    .left_col {
+      width: 30%;
+    }
+
+    .mid_col {
+      width: 30%;
+
+    }
+
+    .right_col {
+      width: 30%;
+
+    }
+
+    .margin-left {
+      /* margin: auto; */
+      margin-left: 5%;
+    }
+
+    .margin-right {
+      /* margin: auto; */
+      margin-right: 2%;
     }
 
     @media only screen and (max-width: 600px) {
@@ -162,8 +189,68 @@
         <p>${presenting_problems}</p>
 
       </div>
-      <br />
-
+      <h3 class="heading">Medical History:</h3>
+      <div class="flex">
+        <div class="left_col">
+          <div class="input-group mb-3 margin-left">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><input type="checkbox" aria-describedby="label_39" class="form-checkbox"
+                  id="input_39_0" name="heart_conditions" ${heart_conditions}><label class="margin-left"
+                  id="label_input_39_0" for="input_39_0">Heart
+                  conditions</label></div>
+            </div>
+            <div class="input-group-prepend">
+              <div class="input-group-text"><input type="checkbox" aria-describedby="label_39" class="form-checkbox"
+                  id="input_39_0" name="respiratory_problems" ${respiratory_problems}><label class="margin-left"
+                  id="label_input_39_0" for="input_39_0">Respiratory
+                  Problems</label></div>
+            </div>
+            <div class="input-group-prepend">
+              <div class="input-group-text"><input type="checkbox" aria-describedby="label_39" class="form-checkbox"
+                  id="input_39_0" name="diabetes" ${diabetes}><label class="margin-left" id="label_input_39_0"
+                  for="input_39_0">Diabetes</label></div>
+            </div>
+          </div>
+        </div>
+        <div class="mid_col">
+          <div class="input-group mb-3 margin-left">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><input type="checkbox" aria-describedby="label_39" class="form-checkbox"
+                  id="input_39_0" name="epilepsy" ${epilepsy}><label class="margin-left" id="label_input_39_0"
+                  for="input_39_0">Epilepsy</label></div>
+            </div>
+            <div class="input-group-prepend">
+              <div class="input-group-text"><input type="checkbox" aria-describedby="label_39" class="form-checkbox"
+                  id="input_39_0" name="major_surgery" ${major_surgery}><label class="margin-left" id="label_input_39_0"
+                  for="input_39_0">Major Surgery</label></div>
+            </div>
+            <div class="input-group-prepend">
+              <div class="input-group-text"><input type="checkbox" aria-describedby="label_39" class="form-checkbox"
+                  id="input_39_0" name="rheumatoid_arthritis" ${rheumatoid_arthritis}><label class="margin-left"
+                  id="label_input_39_0" for="input_39_0">Rheumatoid Arthritis</label></div>
+            </div>
+          </div>
+        </div>
+        <div class="right_col">
+          <div class="input-group mb-3 margin-left">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><input type="checkbox" aria-describedby="label_39" class="form-checkbox"
+                  id="input_39_0" name="fractures" ${fractures}><label class="margin-left" id="label_input_39_0"
+                  for="input_39_0">Fractures</label></div>
+            </div>
+            <div class="input-group-prepend">
+              <div class="input-group-text"><input type="checkbox" aria-describedby="label_39" class="form-checkbox"
+                  id="input_39_0" name="cancer" ${cancer}><label class="margin-left" id="label_input_39_0"
+                  for="input_39_0">Cancer</label></div>
+            </div>
+            <div class="input-group-prepend">
+              <div class="input-group-text"><input type="checkbox" aria-describedby="label_39" class="form-checkbox"
+                  id="input_39_0" name="thyroid" ${thyroid}><label class="margin-left" id="label_input_39_0"
+                  for="input_39_0">Thyroid Problems</label></div>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
 </body>
 

@@ -12,6 +12,15 @@ class App extends Component {
     sex: "undefined",
     referral: "",
     presenting_problems: "",
+    heart_conditions: "",
+    respiratory_problems: "",
+    diabetes: "",
+    epilepsy: "",
+    major_surgery: "",
+    rheumatoid_arthritis: "",
+    fractures: "",
+    cancer: "",
+    thyroid: "",
   };
 
   handleChange = ({ target: { value, name } }) =>
@@ -49,7 +58,7 @@ class App extends Component {
                 id="fname"
                 type="text"
                 name="firstName"
-                required
+                //required
                 onChange={this.handleChange}
               />
             </div>
@@ -62,7 +71,7 @@ class App extends Component {
                 id="lname"
                 type="text"
                 name="lastName"
-                required
+                //required
                 onChange={this.handleChange}
               />
             </div>
@@ -75,7 +84,7 @@ class App extends Component {
                 id="bdate"
                 type="date"
                 name="bdate"
-                required
+                //required
                 onChange={this.handleChange}
               />
               <i class="fas fa-calendar-alt" />
@@ -106,7 +115,7 @@ class App extends Component {
                 id="referral"
                 type="text"
                 name="referral"
-                required
+                //required
                 onChange={this.handleChange}
               />
             </div>
@@ -121,7 +130,7 @@ class App extends Component {
                 rows="5"
                 id="presenting_problems"
                 name="presenting_problems"
-                required
+                //required
                 onChange={this.handleChange}
               />
             </div>
@@ -200,194 +209,474 @@ class App extends Component {
                 rows="5"
                 id="how_affects_life"
                 name="how_affects_life"
-                required
-                onChange={this.handleChange}
-              />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-12 item">
-              <label for="presenting_problems">Client’s treatment goal:</label>
-              <textarea
-                class="form-control"
-                rows="5"
-                id="treatment_goal:"
-                name="treatment_goal"
-                required
+                //required
                 onChange={this.handleChange}
               />
             </div>
           </div>
           <h6 class="heading">Medical History:</h6>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <input
-                  type="checkbox"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-            </div>
-            <label for="presenting_problems">Client’s treatment goal:</label>
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <input
-                  type="checkbox"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-            </div>
-            <label for="presenting_problems">Client’s treatment goal:</label>
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <input
-                  type="checkbox"
-                  aria-label="Checkbox for following text input"
-                />
-              </div>
-            </div>
-            <label for="presenting_problems">Client’s treatment goal:</label>
-          </div>
-          <li class="form-line" data-type="control_checkbox" id="id_39">
-            <label
-              class="form-label form-label-left form-label-auto"
-              id="label_39"
-              for="input_39"
-            />
-            <div id="cid_39" class="form-input">
-              <div
-                class="form-single-column"
-                role="group"
-                aria-labelledby="label_39"
-                data-component="checkbox"
-              >
-                <span class="form-checkbox-item">
-                  <span class="dragger-item" />
-                  <input
-                    type="checkbox"
-                    aria-describedby="label_39"
-                    class="form-checkbox"
-                    id="input_39_0"
-                    name="q39_input39[]"
-                    value="Heart conditions"
-                  />
-                  <label id="label_input_39_0" for="input_39_0">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                <div class="input-group mb-3 margin-left">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <input
+                        type="checkbox"
+                        aria-describedby="label_39"
+                        class="form-checkbox"
+                        id="input_39_0"
+                        name="heart_conditions"
+                        value="checked"
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                  </div>
+                  <label
+                    class="margin-left"
+                    id="label_input_39_0"
+                    for="input_39_0"
+                  >
                     Heart conditions
                   </label>
-                </span>
-                <span class="form-checkbox-item">
-                  <span class="dragger-item" />
-                  <input
-                    type="checkbox"
-                    aria-describedby="label_39"
-                    class="form-checkbox"
-                    id="input_39_1"
-                    name="q39_input39[]"
-                    value="Lung/breathing problems, e.g. Asthma"
-                  />
-                  <label id="label_input_39_1" for="input_39_1">
-                    Lung/breathing problems, e.g. Asthma
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <input
+                        type="checkbox"
+                        aria-describedby="label_39"
+                        class="form-checkbox"
+                        id="input_39_0"
+                        name="respiratory_problems"
+                        value="checked"
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                  </div>
+                  <label
+                    class="margin-left"
+                    id="label_input_39_0"
+                    for="input_39_0"
+                  >
+                    Respiratory problems
                   </label>
-                </span>
-                <span class="form-checkbox-item">
-                  <span class="dragger-item" />
-                  <input
-                    type="checkbox"
-                    aria-describedby="label_39"
-                    class="form-checkbox"
-                    id="input_39_2"
-                    name="q39_input39[]"
-                    value="Diabetes"
-                  />
-                  <label id="label_input_39_2" for="input_39_2">
+                  <div class="input-group-prepend" id="diabetes">
+                    <div class="input-group-text">
+                      <input
+                        type="checkbox"
+                        aria-describedby="label_39"
+                        class="form-checkbox"
+                        id="input_39_0"
+                        name="diabetes"
+                        value="checked"
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                  </div>
+                  <label
+                    class="margin-left"
+                    id="label_diabetes"
+                    for="input_39_0"
+                  >
                     Diabetes
                   </label>
-                </span>
-                <span class="form-checkbox-item">
-                  <span class="dragger-item" />
-                  <input
-                    type="checkbox"
-                    aria-describedby="label_39"
-                    class="form-checkbox"
-                    id="input_39_3"
-                    name="q39_input39[]"
-                    value="Epilepsy"
-                  />
-                  <label id="label_input_39_3" for="input_39_3">
-                    Epilepsy
+                </div>
+              </div>
+              <div class="col-sm">
+                <div class="input-group mb-3 margin-left">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <input
+                        type="checkbox"
+                        aria-describedby="label_39"
+                        class="form-checkbox"
+                        id="input_39_0"
+                        name="heart_conditions"
+                        value="checked"
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                  </div>
+                  <label
+                    class="margin-left"
+                    id="label_input_39_0"
+                    for="input_39_0"
+                  >
+                    Heart conditions
                   </label>
-                </span>
-                <span class="form-checkbox-item">
-                  <span class="dragger-item" />
-                  <input
-                    type="checkbox"
-                    aria-describedby="label_39"
-                    class="form-checkbox"
-                    id="input_39_4"
-                    name="q39_input39[]"
-                    value="Major Surgery"
-                  />
-                  <label id="label_input_39_4" for="input_39_4">
-                    Major Surgery
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <input
+                        type="checkbox"
+                        aria-describedby="label_39"
+                        class="form-checkbox"
+                        id="input_39_0"
+                        name="respiratory_problems"
+                        value="checked"
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                  </div>
+                  <label
+                    class="margin-left"
+                    id="label_input_39_0"
+                    for="input_39_0"
+                  >
+                    Respiratory problems
                   </label>
-                </span>
-                <span class="form-checkbox-item">
-                  <span class="dragger-item" />
-                  <input
-                    type="checkbox"
-                    aria-describedby="label_39"
-                    class="form-checkbox"
-                    id="input_39_5"
-                    name="q39_input39[]"
-                    value="Rheumatoid Arthritis (either yourself or a family member)"
-                  />
-                  <label id="label_input_39_5" for="input_39_5">
-                    Rheumatoid Arthritis (either yourself or a family member)
+                  <div class="input-group-prepend" id="diabetes">
+                    <div class="input-group-text">
+                      <input
+                        type="checkbox"
+                        aria-describedby="label_39"
+                        class="form-checkbox"
+                        id="input_39_0"
+                        name="diabetes"
+                        value="checked"
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                  </div>
+                  <label
+                    class="margin-left"
+                    id="label_diabetes"
+                    for="input_39_0"
+                  >
+                    Diabetes
                   </label>
-                </span>
-                <span class="form-checkbox-item">
-                  <span class="dragger-item" />
-                  <input
-                    type="checkbox"
-                    aria-describedby="label_39"
-                    class="form-checkbox"
-                    id="input_39_6"
-                    name="q39_input39[]"
-                    value="Fractures"
-                  />
-                  <label id="label_input_39_6" for="input_39_6">
-                    Fractures
+                </div>
+              </div>
+              <div class="col-sm">
+                <div class="input-group mb-3 margin-left">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <input
+                        type="checkbox"
+                        aria-describedby="label_39"
+                        class="form-checkbox"
+                        id="input_39_0"
+                        name="heart_conditions"
+                        value="checked"
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                  </div>
+                  <label
+                    class="margin-left"
+                    id="label_input_39_0"
+                    for="input_39_0"
+                  >
+                    Heart conditions
                   </label>
-                </span>
-                <span class="form-checkbox-item">
-                  <span class="dragger-item" />
-                  <input
-                    type="checkbox"
-                    aria-describedby="label_39"
-                    class="form-checkbox"
-                    id="input_39_7"
-                    name="q39_input39[]"
-                    value="Cancer (past or current)"
-                  />
-                  <label id="label_input_39_7" for="input_39_7">
-                    Cancer (past or current)
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <input
+                        type="checkbox"
+                        aria-describedby="label_39"
+                        class="form-checkbox"
+                        id="input_39_0"
+                        name="respiratory_problems"
+                        value="checked"
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                  </div>
+                  <label
+                    class="margin-left"
+                    id="label_input_39_0"
+                    for="input_39_0"
+                  >
+                    Respiratory problems
                   </label>
-                </span>
-                <span class="form-checkbox-item">
-                  <span class="dragger-item" />
-                  <input
-                    type="checkbox"
-                    aria-describedby="label_39"
-                    class="form-checkbox"
-                    id="input_39_8"
-                    name="q39_input39[]"
-                    value="Thyroid problems"
-                  />
-                  <label id="label_input_39_8" for="input_39_8">
-                    Thyroid problems
+                  <div class="input-group-prepend" id="diabetes">
+                    <div class="input-group-text">
+                      <input
+                        type="checkbox"
+                        aria-describedby="label_39"
+                        class="form-checkbox"
+                        id="input_39_0"
+                        name="diabetes"
+                        value="checked"
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                  </div>
+                  <label
+                    class="margin-left"
+                    id="label_diabetes"
+                    for="input_39_0"
+                  >
+                    Diabetes
                   </label>
-                </span>
-                <span class="form-checkbox-item">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3 margin-left">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input
+                  type="checkbox"
+                  aria-describedby="label_39"
+                  class="form-checkbox"
+                  id="input_39_0"
+                  name="heart_conditions"
+                  value="checked"
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+            <label class="margin-left" id="label_input_39_0" for="input_39_0">
+              Heart conditions
+            </label>
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input
+                  type="checkbox"
+                  aria-describedby="label_39"
+                  class="form-checkbox"
+                  id="input_39_0"
+                  name="respiratory_problems"
+                  value="checked"
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+            <label class="margin-left" id="label_input_39_0" for="input_39_0">
+              Respiratory problems
+            </label>
+            <div class="input-group-prepend" id="diabetes">
+              <div class="input-group-text">
+                <input
+                  type="checkbox"
+                  aria-describedby="label_39"
+                  class="form-checkbox"
+                  id="input_39_0"
+                  name="diabetes"
+                  value="checked"
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+            <label class="margin-left" id="label_diabetes" for="input_39_0">
+              Diabetes
+            </label>
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input
+                  type="checkbox"
+                  aria-describedby="label_39"
+                  class="form-checkbox"
+                  id="input_39_0"
+                  name="epilepsy"
+                  value="checked"
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+            <label class="margin-left" id="label_input_39_0" for="input_39_0">
+              Epilepsy
+            </label>
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input
+                  type="checkbox"
+                  aria-describedby="label_39"
+                  class="form-checkbox"
+                  id="input_39_0"
+                  name="major_surgery"
+                  value="checked"
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+            <label class="margin-left" id="label_input_39_0" for="input_39_0">
+              Major Surgery
+            </label>
+          </div>
+          <div class="input-group mb-5 margin-left">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input
+                  type="checkbox"
+                  aria-describedby="label_39"
+                  class="form-checkbox"
+                  id="input_39_0"
+                  name="rheumatoid_arthritis"
+                  value="checked"
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+            <label class="margin-left" id="label_input_39_0" for="input_39_0">
+              Rheumatoid Arthritis
+            </label>
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input
+                  type="checkbox"
+                  aria-describedby="label_39"
+                  class="form-checkbox"
+                  id="input_39_0"
+                  name="fractures"
+                  value="checked"
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+            <label class="margin-left" id="label_input_39_0" for="input_39_0">
+              Fractures
+            </label>
+            <div class="input-group-prepend" id="diabetes">
+              <div class="input-group-text">
+                <input
+                  type="checkbox"
+                  aria-describedby="label_39"
+                  class="form-checkbox"
+                  id="input_39_0"
+                  name="diabetes"
+                  value="checked"
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+            <label class="margin-left" id="label_diabetes" for="input_39_0">
+              Diabetes
+            </label>
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input
+                  type="checkbox"
+                  aria-describedby="label_39"
+                  class="form-checkbox"
+                  id="input_39_0"
+                  name="heart_conditions"
+                  value="checked"
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+            <label class="margin-left" id="label_input_39_0" for="input_39_0">
+              Heart conditions
+            </label>
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input
+                  type="checkbox"
+                  aria-describedby="label_39"
+                  class="form-checkbox"
+                  id="input_39_0"
+                  name="respiratory_problems"
+                  value="checked"
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+            <label class="margin-left" id="label_input_39_0" for="input_39_0">
+              Respiratory problems
+            </label>
+          </div>
+          <div class="input-group mb-3 margin-left">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input
+                  type="checkbox"
+                  aria-describedby="label_39"
+                  class="form-checkbox"
+                  id="input_39_0"
+                  name="epilepsy"
+                  value="checked"
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+            <label class="margin-left" id="label_input_39_0" for="input_39_0">
+              Epilepsy
+            </label>
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input
+                  type="checkbox"
+                  aria-describedby="label_39"
+                  class="form-checkbox"
+                  id="input_39_0"
+                  name="major_surgery"
+                  value="checked"
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+            <label class="margin-left" id="label_input_39_0" for="input_39_0">
+              Major Surgery
+            </label>
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input
+                  type="checkbox"
+                  aria-describedby="label_39"
+                  class="form-checkbox"
+                  id="input_39_0"
+                  name="rheumatoid_arthritis"
+                  value="checked"
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+            <label class="margin-left" id="label_input_39_0" for="input_39_0">
+              Rheumatoid Arthritis
+            </label>
+          </div>
+          <div class="input-group mb-3 margin-left">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input
+                  type="checkbox"
+                  aria-describedby="label_39"
+                  class="form-checkbox"
+                  id="input_39_0"
+                  name="fractures"
+                  value="checked"
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+            <label class="margin-left" id="label_input_39_0" for="input_39_0">
+              Fractures
+            </label>
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input
+                  type="checkbox"
+                  aria-describedby="label_39"
+                  class="form-checkbox"
+                  id="input_39_0"
+                  name="cancer"
+                  value="checked"
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+            <label class="margin-left" id="label_input_39_0" for="input_39_0">
+              Cancer
+            </label>
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input
+                  type="checkbox"
+                  aria-describedby="label_39"
+                  class="form-checkbox"
+                  id="input_39_0"
+                  name="thyroid"
+                  value="checked"
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+            <label class="margin-left" id="label_input_39_0" for="input_39_0">
+              Thyroid problems
+            </label>
+          </div>
+
+          {/*      <span class="form-checkbox-item">
                   <span class="dragger-item" />
                   <input
                     type="checkbox"
@@ -403,7 +692,7 @@ class App extends Component {
                 </span>
               </div>
             </div>
-          </li>
+          </li> */}
           {/* <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputCity">City</label>
@@ -569,7 +858,7 @@ class App extends Component {
             <label for="fname">
               Urine:<span>*</span>
             </label>
-            <input id="fname" type="text" name="urine" required />
+            <input id="fname" type="text" name="urine" //required />
           </div>
           <label for="sex">
             Mobility<span>*</span>
@@ -584,25 +873,25 @@ class App extends Component {
             <label for="fname">
               Cognitive Function:<span>*</span>
             </label>
-            <input id="fname" type="text" name="cognitive" required />
+            <input id="fname" type="text" name="cognitive" //required />
           </div>
           <div class="item">
             <label for="fname">
               Hand Function:<span>*</span>
             </label>
-            <input id="fname" type="text" name="hand_function" required />
+            <input id="fname" type="text" name="hand_function" //required />
           </div>
           <div class="item">
             <label for="fname">
               Communication:<span>*</span>
             </label>
-            <input id="fname" type="text" name="communication" required />
+            <input id="fname" type="text" name="communication" //required />
           </div>
           <div class="item">
             <label for="fname">
               Environmental barriers:<span>*</span>
             </label>
-            <input id="fname" type="text" name="environmental" required />
+            <input id="fname" type="text" name="environmental" //required />
           </div>
           <div class="item">
             <label for="instructions">Bladder Diary: </label>
@@ -616,13 +905,13 @@ class App extends Component {
             <label for="phone">
               Daytime Phone<span>*</span>
             </label>
-            <input id="phone" type="number" name="phone" required />
+            <input id="phone" type="number" name="phone" //required />
           </div>
           <div class="item">
             <label for="phone">
               Evening Phone<span>*</span>
             </label>
-            <input id="phone" type="number" name="phone" required />
+            <input id="phone" type="number" name="phone" //required />
           </div>
         </fieldset>
         <br />
@@ -632,7 +921,7 @@ class App extends Component {
             <label for="date">
               Date<span>*</span>
             </label>
-            <input id="date" type="date" name="date" required />
+            <input id="date" type="date" name="date" //required />
             <i class="fas fa-calendar-alt" />
           </div>
           <div class="item">
