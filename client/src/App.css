@@ -234,18 +234,30 @@ button:hover {
 .margin-left {
   margin: auto;
   margin-left: 2%;
-  /* width: 30%; */
+  width: 80%;
 }
 .input-group {
   justify-content: space-around !important;
+  /* flex-wrap: nowrap !important; */
 }
 .flex {
   display: -webkit-box;
   display: flex;
+}
+
+.bigCheckbox {
+  padding: 0.7rem 0.7rem;
+}
+
+.center {
   justify-content: center;
   -webkit-box-pack: center;
 
   align-items: center;
+}
+
+.flex-start {
+  justify-content: flex-start;
 }
 
 .left_col {
@@ -260,7 +272,42 @@ button:hover {
   width: 30%;
 }
 
-@media (min-width: 568px) {
+label {
+  margin: 3%;
+}
+
+@media (max-width: 993px) {
+  /* .col-sm { */
+  /* -ms-flex-preferred-size: 0; */
+  /* flex-basis: 1 !important; */
+  /* -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%; */
+  /* } */
+
+  .margin-left {
+    width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  /* .col-sm { */
+  /* -ms-flex-preferred-size: 0; */
+  /* flex-basis: 1 !important; */
+  /* -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%; */
+  /* } */
+  .input-group {
+    justify-content: center;
+    flex-wrap: nowrap !important;
+  }
+  .margin-left {
+    width: 100%;
+  }
+}
+
+@media (min-width: 576px) {
   .name-item,
   .city-item {
     display: flex;
@@ -277,6 +324,16 @@ button:hover {
   .name-item div label {
     display: block;
     padding-bottom: 5px;
+  }
+}
+
+@media (max-width: 576px) {
+  .input-group {
+    justify-content: center;
+    flex-wrap: wrap !important;
+  }
+  .margin-left {
+    width: 85% !important;
   }
 }
 
