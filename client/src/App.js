@@ -303,7 +303,7 @@ class App extends Component {
                   >
                     Stroke
                   </label>
-                  <div class="input-group-prepend" id="diabetes">
+                  <div class="input-group-prepend" id="hepatitis">
                     <div class="input-group-text">
                       <input
                         type="checkbox"
@@ -316,11 +316,7 @@ class App extends Component {
                       />
                     </div>
                   </div>
-                  <label
-                    class="margin-left"
-                    id="label_diabetes"
-                    for="input_39_0"
-                  >
+                  <label class="margin-left" id="hepatitis" for="input_39_0">
                     Hepatitis
                   </label>
                   <div class="input-group-prepend">
