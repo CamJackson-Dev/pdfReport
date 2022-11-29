@@ -12,6 +12,10 @@ class App extends Component {
     sex: "undefined",
     referral: "",
     presenting_problems: "",
+    high_cholesterol: "",
+    stroke: "",
+    hepatitis: "",
+    kidney_issues: "",
     heart_conditions: "",
     respiratory_problems: "",
     diabetes: "",
@@ -248,6 +252,90 @@ class App extends Component {
                         aria-describedby="label_39"
                         class="form-checkbox"
                         id="input_39_0"
+                        name="high_cholesterol"
+                        value="checked"
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                  </div>
+                  <label
+                    class="margin-left"
+                    id="label_input_39_0"
+                    for="input_39_0"
+                  >
+                    High Cholesterol
+                  </label>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <input
+                        type="checkbox"
+                        aria-describedby="label_39"
+                        class="form-checkbox"
+                        id="input_39_0"
+                        name="stroke"
+                        value="checked"
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                  </div>
+                  <label
+                    class="margin-left"
+                    id="label_input_39_0"
+                    for="input_39_0"
+                  >
+                    Stroke
+                  </label>
+                  <div class="input-group-prepend" id="diabetes">
+                    <div class="input-group-text">
+                      <input
+                        type="checkbox"
+                        aria-describedby="label_39"
+                        class="form-checkbox"
+                        id="input_39_0"
+                        name="hepatitis"
+                        value="checked"
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                  </div>
+                  <label
+                    class="margin-left"
+                    id="label_diabetes"
+                    for="input_39_0"
+                  >
+                    Hepatitis
+                  </label>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <input
+                        type="checkbox"
+                        aria-describedby="label_39"
+                        class="form-checkbox"
+                        id="input_39_0"
+                        name="kidney_issues"
+                        value="checked"
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                  </div>
+                  <label
+                    class="margin-left"
+                    id="label_input_39_0"
+                    for="input_39_0"
+                  >
+                    Kidney issues
+                  </label>
+                </div>
+              </div>
+              <div class="col-sm">
+                <div class="input-group mb-3 margin-left">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <input
+                        type="checkbox"
+                        aria-describedby="label_39"
+                        class="form-checkbox"
+                        id="input_39_0"
                         name="heart_conditions"
                         value="checked"
                         onChange={this.handleChange}
@@ -343,7 +431,7 @@ class App extends Component {
                     id="label_input_39_0"
                     for="input_39_0"
                   >
-                    Epilepsy
+                    Epilepsy (seizures)
                   </label>
                   <div class="input-group-prepend">
                     <div class="input-group-text">
@@ -495,7 +583,7 @@ class App extends Component {
             <div class="form-row">
               <div class="form-group col-md-12 item">
                 <label for="medical_history_other">
-                  Other information relevant to Medical History:
+                  Other Medical conditions:
                 </label>
                 <textarea
                   class="form-control"

@@ -5,6 +5,10 @@ module.exports = ({
   sex,
   presenting_problems,
   referral,
+  high_cholesterol,
+  stroke,
+  hepatitis,
+  kidney_issues,
   heart_conditions,
   respiratory_problems,
   diabetes,
@@ -351,6 +355,11 @@ module.exports = ({
         </div>
         <div class="right_col_30">
           <div class="input-group mb-3 margin-left">
+          <div class="input-group-prepend">
+              <div class="input-group-text"><input type="checkbox" aria-describedby="label_39" class="form-checkbox"
+                  id="input_39_0" name="rheumatoid_arthritis" ${rheumatoid_arthritis}><label class="margin-left"
+                  id="label_input_39_0" for="input_39_0">Rheumatoid Arthritis</label></div>
+            </div>
             <div class="input-group-prepend">
               <div class="input-group-text"><input type="checkbox" aria-describedby="label_39" class="form-checkbox"
                   id="input_39_0" name="fractures" ${fractures}><label class="margin-left" id="label_input_39_0"
