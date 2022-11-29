@@ -10,8 +10,8 @@ class App extends Component {
     lastName: "",
     bdate: 0,
     sex: "undefined",
-    referral: "",
     presenting_problems: "",
+    referral: "",
     high_cholesterol: "",
     stroke: "",
     hepatitis: "",
@@ -31,23 +31,41 @@ class App extends Component {
     medical_history_other: "",
     surgical_history: "",
     medications: "",
-    toileting_function: "",
     bladder_diary_complete: "Yes",
     bladder_diary_details: "",
     urine_colour: "",
     urine_odor: "",
+    toileting_function: "",
+    incontinence_aids: "",
     fluid_restriction: "No",
     fluid_restriction_total: 0,
     fluid_input_caffeine: 0,
     fluid_input_alcohol: 0,
-    fluid_input_other: 0,
+    fluid_input_other_drinks: 0,
+    fluid_input_iv: 0,
     fluid_input_total: 0,
-    urine_frequency: "",
-    nocturia: "",
+    urine_frequency: "undefined",
+    nocturia: "undefined",
     bladder_min_void: 0,
     bladder_max_void: 0,
+    fluid_output_total: 0,
+    stress_incontinence_confirmed: "No symtpoms",
+    stress_incontinence_leakage: "None",
+    overactive_bladder_confirmed: "No symtpoms",
+    overactive_bladder_leakage: "None",
+    nocturnal_enuresis_confirmed: "No symtpoms",
+    nocturnal_enuresis_leakage: "None",
+    overflow_incontinence_confirmed: "No symtpoms",
+    overflow_incontinence_leakage: "None",
+    reflex_incontinence_confirmed: "No symtpoms",
+    reflex_incontinence_leakage: "None",
+    pmd_confirmed: "",
+    pmd_leakage: "",
     mobility: "Independant",
     mobility_details: "",
+    cognitive_function: "",
+    hand_function: "",
+    environmental_barriers: "",
   };
 
   handleChange = ({ target: { value, name } }) =>
@@ -431,7 +449,7 @@ class App extends Component {
                     id="label_input_39_0"
                     for="input_39_0"
                   >
-                    Epilepsy (seizures)
+                    Epilepsy
                   </label>
                   <div class="input-group-prepend">
                     <div class="input-group-text">
@@ -440,7 +458,7 @@ class App extends Component {
                         aria-describedby="label_39"
                         class="form-checkbox"
                         id="input_39_0"
-                        name="smoker"
+                        name="smoking"
                         value="checked"
                         onChange={this.handleChange}
                       />
@@ -624,20 +642,7 @@ class App extends Component {
               />
             </div>
           </div>
-          <h6 class="heading">Toileting Function:</h6>
-          <div class="form-row">
-            <div class="form-group col-md-12 item">
-              {/* <label for="medications">Medications:</label> */}
-              <textarea
-                class="form-control"
-                rows="5"
-                id="function"
-                name="function"
-                //required
-                onChange={this.handleChange}
-              />
-            </div>
-          </div>
+
           <h5 class="heading">Bladder:</h5>
           <div class="form-row">
             <div class="form-group col-md-3 item">
@@ -702,8 +707,264 @@ class App extends Component {
               </div>
             </div>
           </div>
+          <div class="form-row">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Type of Bladder Dysfunction</th>
+                  <th scope="col">Questions to ask the client</th>
+                  <th scope="col">Yes/No</th>
+                  <th scope="col">Amount of leakage</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Stress Incontinence</th>
+                  <td>
+                    <i>
+                      Do you leak when: cough, laugh or sneeze? go upstairs /
+                      downhill? get up from chair / bed?
+                    </i>
+                  </td>
+                  <td>
+                    <select
+                      name="stress_incontinence_confirmed"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Symptoms evident">Yes</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select
+                      name="stress_incontinence_leakage"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="None">
+                        None
+                      </option>
+                      <option value="Small">Small</option>
+                      <option value="Moderate">Moderate</option>
+                      <option value="Large">Large</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Overactive Bladder & Urge Incontinence</th>
+                  <td>
+                    <i>
+                      How long can you hold on after you feel a desire to void?
+                      Do you the feel an urgent desire to void when you hear
+                      water running or put you key in the door? Is the desire so
+                      great that you would leak if you did not go to the toilet?
+                    </i>
+                  </td>
+                  <td>
+                    <select
+                      name="overactive_bladder_confirmed"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Symptoms evident">Yes</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select
+                      name="overactive_bladder_leakage"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="None">
+                        None
+                      </option>
+                      <option value="Small">Small</option>
+                      <option value="Moderate">Moderate</option>
+                      <option value="Large">Large</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Nocturnal Enuresis</th>
+                  <td>
+                    <i>Do you wet the bed? If yes, how often?</i>
+                  </td>
+                  <td>
+                    <select
+                      name="nocturnal_enuresis_confirmed"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Symptoms evident">Yes</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select
+                      name="nocturnal_enuresis_leakage"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="None">
+                        None
+                      </option>
+                      <option value="Small">Small</option>
+                      <option value="Moderate">Moderate</option>
+                      <option value="Large">Large</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Overflow Incontinence</th>
+                  <td>
+                    <i>
+                      Do you know when urine is leaking? Are you wet all the
+                      time? Do you completely empty your bladder? Is your stream
+                      slow to start Do you have to strain to pass urine?
+                    </i>
+                  </td>
+                  <td>
+                    <select
+                      name="overflow_incontinence_confirmed"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Symptoms evident">Yes</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select
+                      name="overflow_incontinence_leakage"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="None">
+                        None
+                      </option>
+                      <option value="Small">Small</option>
+                      <option value="Moderate">Moderate</option>
+                      <option value="Large">Large</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Reflex Incontinence </th>
+                  <td>Does your bladder empty without warning?</td>
+                  <td>
+                    <select
+                      name="reflex_incontinence_confirmed"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Symptoms evident">Yes</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select
+                      name="reflex_incontinence_leakage"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="None">
+                        None
+                      </option>
+                      <option value="Small">Small</option>
+                      <option value="Moderate">Moderate</option>
+                      <option value="Large">Large</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Post Micturition Dribbling</th>
+                  <td>
+                    <i>Do you leak immediately after voiding?</i>
+                  </td>
+                  <td>
+                    <select
+                      name="pmd_confirmed"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Symptoms evident">Yes</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select
+                      name="pmd_leakage"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="None">
+                        None
+                      </option>
+                      <option value="Small">Small</option>
+                      <option value="Moderate">Moderate</option>
+                      <option value="Large">Large</option>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h6 class="heading">Toileting Function:</h6>
+          <div class="form-row">
+            <div class="form-group col-md-12 item">
+              {/* <label for="medications">Medications:</label> */}
+              <textarea
+                class="form-control"
+                rows="3"
+                id="toileting_function"
+                name="toileting_function"
+                //required
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+          <h6 class="heading">Incontinence aids currently used:</h6>
+          <div class="form-row">
+            <div class="form-group col-md-12 item">
+              {/* <label for="medications">Medications:</label> */}
+              <textarea
+                class="form-control"
+                rows="3"
+                id="incontinence_aids"
+                name="incontinence_aids"
+                //required
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+          <h6 class="heading">Fluid Balance</h6>
 
-          <h6 class="heading">Fluid Input - 24hrs:</h6>
           <div class="form-row">
             <div class="form-group col-md-3 item">
               <label for="fname">Fluid Restriction:</label>
@@ -722,6 +983,7 @@ class App extends Component {
                 <label for="odor">Yes</label>
               </div>
             </div>
+
             <div class="form-group col-md-3 item">
               <label for="fname">Fluid Restriction Total (mls):</label>
               <input
@@ -734,6 +996,8 @@ class App extends Component {
               />
             </div>
           </div>
+          <h6 class="heading">Fluid Input - 24hrs:</h6>
+
           <div class="form-row">
             <div class="form-group col-md-3 item">
               <label for="fname">Caffeine Drinks (mls):</label>
@@ -758,12 +1022,23 @@ class App extends Component {
               />
             </div>
             <div class="form-group col-md-3 item">
-              <label for="fname">Other Fluids (mls):</label>
+              <label for="fname">Other Drinks (mls):</label>
               <input
                 class="form-control"
-                id="fluid_input_other"
+                id="fluid_input_other_drinks"
                 type="number"
-                name="fluid_input_other"
+                name="fluid_input_other_drinks"
+                //required
+                onChange={this.handleChange}
+              />
+            </div>
+            <div class="form-group col-md-3 item">
+              <label for="fname">IV Fluids (mls):</label>
+              <input
+                class="form-control"
+                id="fluid_input_iv"
+                type="number"
+                name="fluid_input_iv"
                 //required
                 onChange={this.handleChange}
               />
@@ -784,7 +1059,7 @@ class App extends Component {
 
           <div class="form-row">
             <div class="form-group col-md-3 item">
-              <label for="fname">Frequency:</label>
+              <label for="urine_frequency">Frequency:</label>
               <input
                 class="form-control"
                 id="urine_frequency"
@@ -827,7 +1102,19 @@ class App extends Component {
                 onChange={this.handleChange}
               />
             </div>
+            <div class="form-group col-md-3 item">
+              <label for="fluid_output_total">Total fluids (mls):</label>
+              <input
+                class="form-control"
+                id="fluid_output_total"
+                type="number"
+                name="fluid_output_total"
+                //required
+                onChange={this.handleChange}
+              />
+            </div>
           </div>
+
           <h5 class="heading">Mobility:</h5>
           <div class="form-row">
             <div class="form-group col-md-3 item">
@@ -857,323 +1144,62 @@ class App extends Component {
               />
             </div>
           </div>
-          {/*      <span class="form-checkbox-item">
-                  <span class="dragger-item" />
-                  <input
-                    type="checkbox"
-                    aria-describedby="label_39"
-                    class="form-checkbox"
-                    id="input_39_9"
-                    name="q39_input39[]"
-                    value="None of the above"
-                  />
-                  <label id="label_input_39_9" for="input_39_9">
-                    None of the above
-                  </label>
-                </span>
-              </div>
-            </div>
-          </li> */}
-          {/* <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="inputCity">City</label>
-              <input type="text" class="form-control" id="inputCity" />
-            </div>
-            <div class="form-group col-md-4">
-              <label for="inputState">State</label>
-              <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
-              </select>
-            </div>
-            <div class="form-group col-md-2">
-              <label for="inputZip">Zip</label>
-              <input type="text" class="form-control" id="inputZip" />
-            </div>
-          </div> */}
-          {/* <div class="item">
-            <label for="instructions">
-              Presenting problems, previous treatment & management strategies:
-            </label>
-            <textarea id="instructions" rows="5" />
-          </div>
-           <div class="question">
-            <label>Gradual</label>
-            <div class="question-answer">
-              <div>
-                <input
-                  type="radio"
-                  value="y"
-                  id="radio_1"
-                  name="gradual"
-                  onChange={this.handleChange}
-                />
-                <label for="radio_1" class="radio">
-                  <span>Yes</span>
-                </label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  value="n"
-                  id="radio_2"
-                  name="gradual"
-                  onChange={this.handleChange}
-                />
-                <label for="radio_2" class="radio">
-                  <span>No</span>
-                </label>
-              </div>
-            </div>
-            <label>Sudden</label>
-            <div class="question-answer">
-              <div>
-                <input
-                  type="radio"
-                  value="y"
-                  id="radio_3"
-                  name="sudden"
-                  onChange={this.handleChange}
-                />
-                <label for="radio_1" class="radio">
-                  <span>Yes</span>
-                </label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  value="n"
-                  id="radio_4"
-                  name="sudden"
-                  onChange={this.handleChange}
-                />
-                <label for="radio_2" class="radio">
-                  <span>No</span>
-                </label>
-              </div>
-            </div>
-            <label>Is condition:</label>
-            <label>Onset</label>
-            <div class="question-answer">
-              <div>
-                <input
-                  type="radio"
-                  value="none"
-                  id="radio_1"
-                  name="visit"
-                  onChange={this.handleChange}
-                />
-                <label for="radio_1" class="radio">
-                  <span>Yes</span>
-                </label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  value="none"
-                  id="radio_2"
-                  name="visit"
-                  onChange={this.handleChange}
-                />
-                <label for="radio_2" class="radio">
-                  <span>No</span>
-                </label>
-              </div>
-            </div>
-            <label>Worsening</label>
-            <div class="question-answer">
-              <div>
-                <input
-                  type="radio"
-                  value="none"
-                  id="radio_1"
-                  name="visit"
-                  onChange={this.handleChange}
-                />
-                <label for="radio_1" class="radio">
-                  <span>Yes</span>
-                </label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  value="none"
-                  id="radio_2"
-                  name="visit"
-                  onChange={this.handleChange}
-                />
-                <label for="radio_2" class="radio">
-                  <span>No</span>
-                </label>
-              </div>
+          <h6 class="heading">Cognitive Function:</h6>
+          <div class="form-row">
+            <div class="form-group col-md-12 item">
+              {/* <label for="medications">Medications:</label> */}
+              <textarea
+                class="form-control"
+                rows="3"
+                id="cognitive_function"
+                name="cognitive_function"
+                //required
+                onChange={this.handleChange}
+              />
             </div>
           </div>
-          <div class="item">
-            <label for="instructions">
-              How does your bladder problem affect your life?
-            </label>
-            <textarea id="instructions" rows="3" />
-          </div>
-          <div class="item">
-            <label for="instructions">Client’s treatment goal: </label>
-            <textarea id="instructions" rows="3" />
-          </div>
-          <div class="item">
-            <label for="instructions">Medical History: </label>
-            <textarea id="instructions" rows="3" />
-          </div>
-          <div class="item">
-            <label for="instructions">Surgical History: </label>
-            <textarea id="instructions" rows="3" />
-          </div>
-          <div class="item">
-            <label for="instructions">Medications: </label>
-            <textarea id="instructions" rows="3" />
-          </div>
-          <div class="item">
-            <label for="instructions">Function: </label>
-            <textarea id="instructions" rows="3" />
-          </div>
-          <div class="item">
-            <label for="fname">
-              Urine:<span>*</span>
-            </label>
-            <input id="fname" type="text" name="urine" //required />
-          </div>
-          <label for="sex">
-            Mobility<span>*</span>
-          </label>
-          <select id="sex">
-            <option selected value="" disabled selected />
-            <option value="independant_mobility">Independant</option>
-            <option value="impaired_mobility">Impaired</option>
-            <option value="with_aid_mobility">Walks with Aid</option>
-          </select>
-          <div class="item">
-            <label for="fname">
-              Cognitive Function:<span>*</span>
-            </label>
-            <input id="fname" type="text" name="cognitive" //required />
-          </div>
-          <div class="item">
-            <label for="fname">
-              Hand Function:<span>*</span>
-            </label>
-            <input id="fname" type="text" name="hand_function" //required />
-          </div>
-          <div class="item">
-            <label for="fname">
-              Communication:<span>*</span>
-            </label>
-            <input id="fname" type="text" name="communication" //required />
-          </div>
-          <div class="item">
-            <label for="fname">
-              Environmental barriers:<span>*</span>
-            </label>
-            <input id="fname" type="text" name="environmental" //required />
-          </div>
-          <div class="item">
-            <label for="instructions">Bladder Diary: </label>
-            <textarea id="instructions" rows="5" />
-          </div>
-          <div class="item">
-            <label for="instructions">Incontinence aids currently used: </label>
-            <textarea id="instructions" rows="5" />
-          </div>
-          <div class="item">
-            <label for="phone">
-              Daytime Phone<span>*</span>
-            </label>
-            <input id="phone" type="number" name="phone" //required />
-          </div>
-          <div class="item">
-            <label for="phone">
-              Evening Phone<span>*</span>
-            </label>
-            <input id="phone" type="number" name="phone" //required />
-          </div>
-        </fieldset>
-        <br />
-        <fieldset>
-          <legend>Appointment Information</legend>
-          <div class="item">
-            <label for="date">
-              Date<span>*</span>
-            </label>
-            <input id="date" type="date" name="date" //required />
-            <i class="fas fa-calendar-alt" />
-          </div>
-          <div class="item">
-            <p>Time</p>
-            <select>
-              <option selected value="" disabled selected />
-              <option value="m">Morning</option>
-              <option value="a">Afternoon</option>
-              <option value="e">Evening</option>
-            </select>
-          </div>
-          <div class="question">
-            <label>Preferred Physician</label>
-            <div class="question-answer">
-              <div>
-                <input
-                  type="radio"
-                  value="none"
-                  id="radio_1"
-                  name="physician"
-                />
-                <label for="radio_1" class="radio">
-                  <span>Dr. Anderson</span>
-                </label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  value="none"
-                  id="radio_3"
-                  name="physician"
-                />
-                <label for="radio_3" class="radio">
-                  <span>Dr. Patel</span>
-                </label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  value="none"
-                  id="radio_4"
-                  name="physician"
-                />
-                <label for="radio_4" class="radio">
-                  <span>No preference</span>
-                </label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  value="none"
-                  id="radio_5"
-                  name="physician"
-                />
-                <label for="radio_5" class="radio">
-                  <span>Dr. Jones</span>
-                </label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  value="none"
-                  id="radio_6"
-                  name="physician"
-                />
-                <label for="radio_6" class="radio">
-                  <span>Dr. Smith</span>
-                </label>
-              </div>
+          <h6 class="heading">Communication:</h6>
+          <div class="form-row">
+            <div class="form-group col-md-12 item">
+              {/* <label for="medications">Medications:</label> */}
+              <textarea
+                class="form-control"
+                rows="3"
+                id="communication"
+                name="communication"
+                //required
+                onChange={this.handleChange}
+              />
             </div>
           </div>
-          */}
+          <h6 class="heading">Hand Function:</h6>
+          <div class="form-row">
+            <div class="form-group col-md-12 item">
+              {/* <label for="medications">Medications:</label> */}
+              <textarea
+                class="form-control"
+                rows="3"
+                id="hand_function"
+                name="hand_function"
+                //required
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+          <h6 class="heading">Environmental Barriers:</h6>
+          <div class="form-row">
+            <div class="form-group col-md-12 item">
+              {/* <label for="medications">Medications:</label> */}
+              <textarea
+                class="form-control"
+                rows="3"
+                id="environmental_barriers"
+                name="environmental_barriers"
+                //required
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
         </fieldset>
         <div class="btn-block">
           {/* <button type="submit" href="/">
