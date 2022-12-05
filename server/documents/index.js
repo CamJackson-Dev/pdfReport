@@ -59,6 +59,39 @@ module.exports = ({
   cognitive_function,
   hand_function,
   environmental_barriers,
+  faecal_soiling,
+  faecal_incontinence,
+  stool_type,
+  other_bowel_symptoms,
+  skin_condition,
+  skin_condition_comments,
+  urogenital_examination_males,
+  urogenital_exam_comments,
+  pharmaceutical_incontinence,
+  restricted_mobility_incontinence,
+  atrophic,
+  infection_incontinence,
+  stool_impaction_incontinence,
+  euo_incontinence,
+  dehydration_incontinence,
+  praised_comments,
+  assessment_completed,
+  bladder_training_required,
+  bowel_management_required,
+  good_bladder_habits_required,
+  prompted_toileting_required,
+  toilet_positioning_required,
+  fluid_dietary_changes_required,
+  carer_education_required,
+  gp_specialist_referral_required,
+  nurse_continence_advisor_referral_required,
+  continence_aids_required,
+  mgt_plan_comments,
+  pad_trials,
+  pad_trial_results,
+  final_comments,
+  nurses_name,
+  nurse_designation,
 }) => {
   const today = new Date();
   return `
@@ -69,11 +102,7 @@ module.exports = ({
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-  <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
-    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous" /> -->
+
   <meta name="theme-color" content="#000000" />
   <title>PDF Result Template</title>
   <style>
@@ -120,7 +149,7 @@ module.exports = ({
       padding-bottom: 20px;
     }
 
-    .invoice-box table tr.top table td.title {
+    .border_bottom .invoice-box table tr.top table td.title {
       font-size: 20px;
       line-height: 45px;
       color: #333;
@@ -135,9 +164,9 @@ module.exports = ({
 
     }
 
-    td {
+    /* td {
       text-align: center !important
-    }
+    } */
 
 
     .heading {
@@ -231,12 +260,23 @@ module.exports = ({
 
     }
 
+    th,
+    td {
+      border-bottom: 1px solid black;
+      border-right: 1px solid black;
+
+    }
+
     .align-left {
       text-align: left;
     }
 
     .align-right {
       text-align: right;
+    }
+
+    .align-justify {
+      text-align: justify;
     }
 
     .left_col_25 {
@@ -275,6 +315,10 @@ module.exports = ({
       margin-left: 2%;
     }
 
+    .border-none {
+      border: none;
+    }
+
     .margin-right {
       /* margin: auto; */
       margin-right: 2%;
@@ -304,47 +348,48 @@ module.exports = ({
   <div class="invoice-box">
     <table cellpadding="0" cellspacing="0">
       <tr class="top">
-        <td colspan="2">
+        <td colspan="2" class="border-none">
           <table>
             <tr>
 
-              <td class="title"><img
+              <td class="title border-none"><img
                   src="https://firebasestorage.googleapis.com/v0/b/australasia-ca07e.appspot.com/o/quantum-therapy%2Flogo%2Flogo-bg.jpg?alt=media&token=58a588a4-4a9d-48d2-9e7b-7125f8690616"
                   style="width:100%; max-width:156px;"></td>
-              <td>
-                Date: ${`${today.getDate()}. ${
-                  today.getMonth() + 1
-                }. ${today.getFullYear()}.`}
+              <td class="border-none">
+                Date: ${`${today.toLocaleDateString()}`}
+                Time: ${`${today.toLocaleTimeString()}`}
+
               </td>
+             
             </tr>
           </table>
         </td>
       </tr>
-      <tr class="heading">
-        <td colspan="2">COMMUNITY NURSING BLADDER ASSESSMENT</td>
+      <tr class="heading" class="border-none">
+        <td colspan="2" class="border-none">COMMUNITY NURSING BLADDER ASSESSMENT</td>
       </tr>
       <tr>
-        <td>
+        <td class="border-none">
           Surname: ${lastName}
         </td>
-        <td>
+        <td class="border-none">
           DOB: ${bdate}
         </td>
       </tr>
       <tr>
-        <td>
+        <td class="border-none">
           First Name: ${firstName}
         </td>
-        <td>Sex:${sex}</td>
+        <td class="border-none">Sex:${sex}</td>
       </tr>
       <tr>
-        <td></td>
-        <td>Referred By:${referral}</td>
+        <td class="border-none"></td>
+        <td class="border-none">Referred By:${referral}</td>
       </tr>
 
     </table>
     <h3>Presenting Problems:</h3>
-    <div class="flex">
+    <div class="align-justify">
       <p>${presenting_problems}</p>
 
     </div>
@@ -451,20 +496,20 @@ module.exports = ({
     </div>
     <br>
     <h3>Other/Details:</h3>
-    <div class="flex">
+    <div class="align-justify">
       <p>${medical_history_other}</p>
     </div>
     <h3 class="heading">Surgical History:</h3>
-    <div class="align-left">
+    <div class="align-justify">
       <p>${surgical_history}</p>
     </div>
     <h3 class="heading">Medications:</h3>
-    <div class="align-left">
+    <div class="align-justify">
       <p>${medications}</p>
     </div>
 
     <h3 class="heading">Bladder:</h3>
-    <div class="align-left">
+    <div class="align-justify">
       <p>Bladder Diary Maintained: ${bladder_diary_complete}</p>
       <p>Bladder Diary Details: ${bladder_diary_details}</p>
       <p>Urine Colour: ${urine_colour}</p>
@@ -489,52 +534,52 @@ module.exports = ({
             <td class="align-center">
               ${stress_incontinence_confirmed}
             </td>
-            <td>
+            <td class="align-center">
               ${stress_incontinence_leakage}
             </td>
           </tr>
           <tr>
             <th scope="row">Overactive Bladder & Urge Incontinence</th>
-            <td>
+            <td class="align-center">
               ${overactive_bladder_confirmed}
             </td>
-            <td>
+            <td class="align-center">
               ${overactive_bladder_leakage}
             </td>
           </tr>
           <tr>
-            <th scope="row">Nocturnal Enuresis</th>
-            <td>
+            <th scope="row ">Nocturnal Enuresis</th>
+            <td class="align-center">
               ${nocturnal_enuresis_confirmed}
             </td>
-            <td>
+            <td class="align-center">
               ${nocturnal_enuresis_leakage}
             </td>
           </tr>
           <tr>
             <th scope="row">Overflow Incontinence</th>
-            <td>
+            <td class="align-center">
               ${overflow_incontinence_confirmed}
             </td>
-            <td>
+            <td class="align-center">
               ${overflow_incontinence_leakage}
             </td>
           </tr>
           <tr>
             <th scope="row">Reflex Incontinence </th>
-            <td>
+            <td class="align-center">
               ${reflex_incontinence_confirmed}
             </td>
-            <td>
+            <td class="align-center">
               ${reflex_incontinence_leakage}
             </td>
           </tr>
           <tr>
             <th scope="row">Post Micturition Dribbling</th>
-            <td>
+            <td class="align-center">
               ${pmd_confirmed}
             </td>
-            <td>
+            <td class="align-center">
               ${pmd_leakage}
             </td>
           </tr>
@@ -543,10 +588,10 @@ module.exports = ({
     </div>
 
     <h3 class="heading">Toileting Function:</h3>
-    <div class="align-left">
+    <div class="align-justify">
       <p>${toileting_function}</p>
     </div>
-    <div class="align-left">
+    <div class="align-justify">
       <p>${incontinence_aids}</p>
     </div>
     <h3>Fluid Balance: </h3>
@@ -567,70 +612,70 @@ module.exports = ({
         </thead>
         <tbody>
           <tr>
-            <td scope="row">Caffeine Drinks</td>
-            <td>
+            <td scope="row " class="align-center">Caffeine Drinks</td>
+            <td class="align-center">
               ${fluid_input_caffeine}
             </td>
-            <td>
+            <td class="align-center">
               Frequency
             </td>
-            <td>
+            <td class="align-center">
               ${urine_frequency}
             </td>
           </tr>
           <tr>
-            <td>
+            <td class="align-center">
               Alcohol Drinks
             </td>
-            <td>
+            <td class="align-center">
               ${fluid_input_alcohol}
             </td>
-            <td>
+            <td class="align-center">
               Nocturia
             </td>
-            <td>
+            <td class="align-center">
               ${nocturia}
             </td>
           </tr>
           <tr>
-            <td>
+            <td class="align-center">
               Other Drinks
             </td>
-            <td>
+            <td class="align-center">
               ${fluid_input_other_drinks}
             </td>
-            <td>
+            <td class="align-center">
               Minimum void
             </td>
-            <td>
+            <td class="align-center">
               ${bladder_min_void}
             </td>
           </tr>
           <tr>
-            <td>
+            <td class="align-center">
               IV Fluids
             </td>
-            <td>
+            <td class="align-center">
               ${fluid_input_iv}
             </td>
-            <td>
+            <td class="align-center">
               Maximum void
             </td>
-            <td>
+            <td class="align-center">
               ${bladder_max_void}
             </td>
           </tr>
           <tr>
-            <td>
+            <td class="align-center">
               Total
             </td>
-            <td>
+            <td class="align-center">
               ${fluid_input_total}
             </td>
-            <td>
+            <td class="align-center">
               Total
             </td>
-            <td>
+            <td class="align-center">
               ${fluid_output_total}
             </td>
           </tr>
@@ -645,20 +690,215 @@ module.exports = ({
       <p>Details: ${mobility_details}</p>
     </div>
     <h3 class="heading">Cognitive Function:</h3>
-    <div class="align-left">
+    <div class="align-justify">
       <p>${cognitive_function}</p>
     </div>
     <h3 class="heading">Hand Function:</h3>
-    <div class="align-left">
+    <div class="align-justify">
       <p>${hand_function}</p>
     </div>
     <h3 class="heading">Environmental Barriers:</h3>
-    <div class="align-left">
+    <div class="align-justify">
       <p>${environmental_barriers}</p>
     </div>
+    <h3 class="heading">Bowel Symptoms:</h3>
+    <div class="align-left">
+      <p>Faecal Soiling: ${faecal_soiling}</p>
+      <p>Faecal Incontinence: ${faecal_incontinence}</p>
+      <p>Stool type: ${stool_type}</p>
+      <p class="align-justify"> Other Bowel Symptoms: ${other_bowel_symptoms}</p>
+    </div>
+    <h3 class="heading">Physical Examination:</h3>
+    <div class="align-left">
+      <h4 class="heading">Skin Condition:</h4>
+      <p>Perineum, groin, thighs, buttocks: ${skin_condition}</p>
+      <p class="align-justify">Comments: ${skin_condition_comments}</p>
+    </div>
+    <div class="align-left">
+      <h4 class="heading">Urogenital Examination:</h4>
+      <p>Male: ${urogenital_examination_males}</p>
+      <p class="align-justify">Comments: ${urogenital_exam_comments}</p>
+    </div>
+    <h3 class="heading align-center">Transient causes of incontinence (PRAISED):</h3>
+    <div class="form-row">
+      <table class="table border">
+        <thead>
+          <tr>
+            <th class="align-center border_bottom" scope="col">Transient Cause</th>
+            <th class="align-center border_bottom" scope="col">Yes/No/NA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row ">Pharmaceutical. Psychology – causing depression, grief, anxiety:</th>
+            <td class="align-center">
+              ${pharmaceutical_incontinence}
+            </td>
 
+          </tr>
+          <tr>
+            <th scope="row">Restricted mobility, retention:</th>
+            <td class="align-center">
+              ${restricted_mobility_incontinence}
+            </td>
 
+          </tr>
+          <tr>
+            <th scope="row">Atrophic urethritis or atrophic vaginitis</th>
+            <td class="align-center">
+              ${atrophic}
+            </td>
 
+          </tr>
+          <tr>
+            <th scope="row">Infection - urinary (symptomatic)</th>
+            <td class="align-center">
+              ${infection_incontinence}
+            </td>
+
+          </tr>
+          <tr>
+            <th scope="row">Stool impaction </th>
+            <td class="align-center">
+              ${stool_impaction_incontinence}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Excessive urine output caused by endocrine/cardiovascular disorder, excessive fluid intake
+              and pedal oedema</th>
+            <td class="align-center">
+              ${euo_incontinence}
+            </td>
+
+          </tr>
+          <tr>
+            <th scope="row">Dehydration. Delirium and other confusional states</th>
+            <td class="align-center">
+              ${dehydration_incontinence}
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <div class="align-left">
+      <p class="align-justify">Other Comments: ${praised_comments}</p>
+    </div>
+    <div class="align-center">
+      <label id="label_input_39_0" for="input_39_0">Fluid Assessment fully completed today: </label><input
+        type="checkbox" aria-describedby="label_39" class="form-checkbox" id="input_39_0" name="assessment_completed"
+        ${assessment_completed}><label class="margin-left-2" id="label_input_39_0" for="input_39_0">Yes</label>
+    </div>
+    <br>
+    <h3 class="heading align-center">Management Plan:</h3>
+
+    <div class="form-row">
+      <table class="table border">
+        <thead>
+          <tr>
+            <th class="align-center border_bottom" scope="col">Interventions Required</th>
+            <th class="align-center border_bottom" scope="col">Yes/No/NA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row ">Bladder Training:</th>
+            <td class="align-center">
+              ${bladder_training_required}
+            </td>
+
+          </tr>
+          <tr>
+            <th scope="row">Bowel Management:</th>
+            <td class="align-center">
+              ${bowel_management_required}
+            </td>
+
+          </tr>
+          <tr>
+            <th scope="row">Advise re:“good bladder habits:</th>
+            <td class="align-center">
+              ${good_bladder_habits_required}
+            </td>
+
+          </tr>
+          <tr>
+            <th scope="row">Prompted Toileting:</th>
+            <td class="align-center">
+              ${prompted_toileting_required}
+            </td>
+
+          </tr>
+          <tr>
+            <th scope="row">Toilet positioning for bladder emptying:</th>
+            <td class="align-center">
+              ${toilet_positioning_required}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Fluid/Dietary changes:</th>
+            <td class="align-center">
+              ${fluid_dietary_changes_required}
+            </td>
+
+          </tr>
+          <tr>
+            <th scope="row">Carer Education</th>
+            <td class="align-center">
+              ${carer_education_required}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Referral to GP/Specialist</th>
+            <td class="align-center">
+              ${gp_specialist_referral_required}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Referral to Nurse Continence Advisor</th>
+            <td class="align-center">
+              ${nurse_continence_advisor_referral_required}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Continence Aids</th>
+            <td class="align-center">
+              ${continence_aids_required}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <h4 class="heading">Other Comments:</h4>
+    <div class="align-justify">
+      <p>${mgt_plan_comments}</p>
+    </div>
+    <h4 class="heading">Trial of Pad/s:</h4>
+    <div class="align-justify">
+      <p>${pad_trials}</p>
+    </div>
+    <h4 class="heading">Result of Pad/s Trial:</h4>
+    <div class="align-justify">
+      <p>${pad_trial_results}</p>
+    </div>
+    <h4 class="heading">Final Comments:</h4>
+    <div class="align-justify">
+      <p>${final_comments}</p>
+    </div>
+    <table cellpadding="0" cellspacing="0">
+      <tr>
+        <td class="border-none">
+          Nurse's Full Name: ${nurses_name}
+        </td>
+      </tr>
+      <tr>
+        <td class="border-none">
+          Designation: ${nurse_designation}
+        </td>
+
+      </tr>
+    </table>
   </div>
 
 </body>

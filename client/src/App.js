@@ -74,16 +74,32 @@ class App extends Component {
     skin_condition: "",
     skin_condition_comments: "",
     urogenital_examination_males: "",
-    pharmaceutical_incontinence: "",
-    restricted_mobility_incontinence: "",
-    atrophic: "",
-    infection_incontinence: "",
-    stool_impaction_incontinence: "",
-    euo_incontinence: "",
-    dehydration_incontinence: "",
+    urogenital_exam_comments: "",
+    pharmaceutical_incontinence: "No",
+    restricted_mobility_incontinence: "No",
+    atrophic: "No",
+    infection_incontinence: "No",
+    stool_impaction_incontinence: "No",
+    euo_incontinence: "No",
+    dehydration_incontinence: "No",
     praised_comments: "",
     assessment_completed: "",
-    assessment_completed_date: "",
+    bladder_training_required: "No",
+    bowel_management_required: "No",
+    good_bladder_habits_required: "No",
+    prompted_toileting_required: "No",
+    toilet_positioning_required: "No",
+    fluid_dietary_changes_required: "No",
+    carer_education_required: "No",
+    gp_specialist_referral_required: "No",
+    nurse_continence_advisor_referral_required: "No",
+    continence_aids_required: "No",
+    mgt_plan_comments: "",
+    pad_trials: "",
+    pad_trial_results: "",
+    final_comments: "",
+    nurses_name: "",
+    nurse_designation: "",
   };
 
   handleChange = ({ target: { value, name } }) =>
@@ -323,7 +339,7 @@ class App extends Component {
                   >
                     Stroke
                   </label>
-                  <div class="input-group-prepend" id="diabetes">
+                  <div class="input-group-prepend" id="hepatitis">
                     <div class="input-group-text">
                       <input
                         type="checkbox"
@@ -336,11 +352,7 @@ class App extends Component {
                       />
                     </div>
                   </div>
-                  <label
-                    class="margin-left"
-                    id="label_diabetes"
-                    for="input_39_0"
-                  >
+                  <label class="margin-left" id="hepatitis" for="input_39_0">
                     Hepatitis
                   </label>
                   <div class="input-group-prepend">
@@ -1346,8 +1358,8 @@ class App extends Component {
               <textarea
                 class="form-control"
                 rows="3"
-                id="skin_condition_comments"
-                name="skin_condition_comments"
+                id="urogenital_exam_comments"
+                name="urogenital_exam_comments"
                 //required
                 onChange={this.handleChange}
               />
@@ -1380,7 +1392,7 @@ class App extends Component {
                       <option selected value="No">
                         No
                       </option>
-                      <option value="Evident">Yes</option>
+                      <option value="Yes">Yes</option>
                       <option value="Not Applicable">N/A</option>
                     </select>
                   </td>
@@ -1397,7 +1409,7 @@ class App extends Component {
                       <option selected value="No">
                         No
                       </option>
-                      <option value="Evident">Yes</option>
+                      <option value="Yes">Yes</option>
                       <option value="Not Applicable">N/A</option>
                     </select>
                   </td>
@@ -1415,7 +1427,7 @@ class App extends Component {
                       <option selected value="No">
                         No
                       </option>
-                      <option value="Evident">Yes</option>
+                      <option value="Yes">Yes</option>
                       <option value="Not Applicable">N/A</option>
                     </select>
                   </td>
@@ -1432,7 +1444,7 @@ class App extends Component {
                       <option selected value="No">
                         No
                       </option>
-                      <option value="Evident">Yes</option>
+                      <option value="Yes">Yes</option>
                       <option value="Not Applicable">N/A</option>
                     </select>
                   </td>
@@ -1449,7 +1461,7 @@ class App extends Component {
                       <option selected value="No">
                         No
                       </option>
-                      <option value="Evident">Yes</option>
+                      <option value="Yes">Yes</option>
                       <option value="Not Applicable">N/A</option>
                     </select>
                   </td>
@@ -1470,7 +1482,7 @@ class App extends Component {
                       <option selected value="No">
                         No
                       </option>
-                      <option value="Evident">Yes</option>
+                      <option value="Yes">Yes</option>
                       <option value="Not Applicable">N/A</option>
                     </select>
                   </td>
@@ -1489,7 +1501,7 @@ class App extends Component {
                       <option selected value="No">
                         No
                       </option>
-                      <option value="Evident">Yes</option>
+                      <option value="Yes">Yes</option>
                       <option value="Not Applicable">N/A</option>
                     </select>
                   </td>
@@ -1511,10 +1523,10 @@ class App extends Component {
               />
             </div>
           </div>
-          <div class="form-row">
+          <div class="form-row center border_bottom">
             <div class="form-group col-md-3 item">
               <label for="fname">Fluid Assessment fully completed today:</label>
-              <div class="input-group-prepend">
+              <div class="input-group-prepend center">
                 <div class="input-group-text bigCheckbox">
                   <input
                     type="checkbox"
@@ -1522,27 +1534,284 @@ class App extends Component {
                     class="form-checkbox"
                     id="input_39_0"
                     name="assessment_completed"
-                    value="Yes"
+                    value="checked"
                     onChange={this.handleChange}
                   />
                 </div>
                 <label for="odor">Yes</label>
               </div>
             </div>
+          </div>
+          <div class="flex center">
+            <h5 class="heading center">Management Plan:</h5>
+          </div>
+          <div class="form-row ">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Interventions Required:</th>
+                  <th scope="col">Yes/No/NA</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Bladder Training</th>
 
-            <div class="form-group col-md-3 item">
-              <label for="bdate">
-                Assessment Completion Date<span>*</span>
-              </label>
-              <input
+                  <td>
+                    <select
+                      name="bladder_training_required"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Bowel Management</th>
+                  <td>
+                    <select
+                      name="bowel_management_required"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Advise re:“good bladder habits”</th>
+
+                  <td>
+                    <select
+                      name="good_bladder_habits_required"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Prompted Toileting</th>
+                  <td>
+                    <select
+                      name="prompted_toileting_required"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Toilet positioning for bladder emptying</th>
+                  <td>
+                    <select
+                      name="toilet_positioning_required"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Fluid/Dietary changes</th>
+
+                  <td>
+                    <select
+                      name="fluid_dietary_changes_required"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Carer Education</th>
+                  <td>
+                    <select
+                      name="carer_education_required"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Referral to GP/Specialist</th>
+                  <td>
+                    <select
+                      name="gp_specialist_referral_required"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Referral to Nurse Continence Advisor</th>
+                  <td>
+                    <select
+                      name="nurse_continence_advisor_referral_required"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Continence Aids</th>
+                  <td>
+                    <select
+                      name="continence_aids_required"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h6 class="heading">Other Comments:</h6>
+          <div class="form-row ">
+            <div class="form-group col-md-12 item">
+              {/* <label for="medications">Comments:</label> */}
+              <textarea
                 class="form-control"
-                id="assessment_completed_date"
-                type="date"
-                name="assessment_completed_date"
+                rows="3"
+                id="mgt_plan_comments"
+                name="mgt_plan_comments"
                 //required
                 onChange={this.handleChange}
               />
-              <i class="fas fa-calendar-alt" />
+            </div>
+          </div>
+          <h6 class="heading">Trial of Pad/s:</h6>
+          <div class="form-row ">
+            <div class="form-group col-md-12 item">
+              {/* <label for="medications">Comments:</label> */}
+              <textarea
+                class="form-control"
+                rows="3"
+                id="pad_trials"
+                name="pad_trials"
+                //required
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+          <h6 class="heading">Result of Pad/s Trial:</h6>
+          <div class="form-row border_bottom">
+            <div class="form-group col-md-12 item">
+              {/* <label for="medications">Comments:</label> */}
+              <textarea
+                class="form-control"
+                rows="3"
+                id="pad_trial_results"
+                name="pad_trial_results"
+                //required
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+          <h6 class="heading">Final Comments:</h6>
+          <div class="form-row ">
+            <div class="form-group col-md-12 item">
+              {/* <label for="medications">Comments:</label> */}
+              <textarea
+                class="form-control"
+                rows="3"
+                id="final_comments"
+                name="final_comments"
+                //required
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-3 item">
+              <label for="bladder_diary_details">Nurse's Full Name:</label>
+              <input
+                class="form-control"
+                id="nurses_name"
+                type="text"
+                name="nurses_name"
+                //required
+                onChange={this.handleChange}
+              />
+            </div>
+            <div class="form-group col-md-3 item">
+              <label for="bladder_diary_complete">Nurse's Designation:</label>
+              <select
+                name="nurse_designation"
+                class="form-control"
+                value={this.state.value}
+                onChange={this.handleChange}
+              >
+                {/* <option selected value="unselected" disabled /> */}
+                <option selected value="Registered Nurse">
+                  Registered Nurse
+                </option>
+                <option value="Enrolled Nurse">Enrolled Nurse</option>
+              </select>
             </div>
           </div>
         </fieldset>
