@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { saveAs } from "file-saver";
+import stool from "./assets/Bristol-Stool-Form.png";
 
 import "./App.css";
 
@@ -49,23 +50,56 @@ class App extends Component {
     bladder_min_void: 0,
     bladder_max_void: 0,
     fluid_output_total: 0,
-    stress_incontinence_confirmed: "No symtpoms",
+    stress_incontinence_confirmed: "Nil",
     stress_incontinence_leakage: "None",
-    overactive_bladder_confirmed: "No symtpoms",
+    overactive_bladder_confirmed: "Nil",
     overactive_bladder_leakage: "None",
-    nocturnal_enuresis_confirmed: "No symtpoms",
+    nocturnal_enuresis_confirmed: "Nil",
     nocturnal_enuresis_leakage: "None",
-    overflow_incontinence_confirmed: "No symtpoms",
+    overflow_incontinence_confirmed: "Nil",
     overflow_incontinence_leakage: "None",
-    reflex_incontinence_confirmed: "No symtpoms",
+    reflex_incontinence_confirmed: "Nil",
     reflex_incontinence_leakage: "None",
-    pmd_confirmed: "",
-    pmd_leakage: "",
+    pmd_confirmed: "Nil",
+    pmd_leakage: "None",
     mobility: "Independant",
     mobility_details: "",
     cognitive_function: "",
     hand_function: "",
     environmental_barriers: "",
+    faecal_soiling: "",
+    faecal_incontinence: "",
+    stool_type: "undefined",
+    other_bowel_symptoms: "",
+    skin_condition: "",
+    skin_condition_comments: "",
+    urogenital_examination_males: "",
+    urogenital_exam_comments: "",
+    pharmaceutical_incontinence: "No",
+    restricted_mobility_incontinence: "No",
+    atrophic: "No",
+    infection_incontinence: "No",
+    stool_impaction_incontinence: "No",
+    euo_incontinence: "No",
+    dehydration_incontinence: "No",
+    praised_comments: "",
+    assessment_completed: "",
+    bladder_training_required: "No",
+    bowel_management_required: "No",
+    good_bladder_habits_required: "No",
+    prompted_toileting_required: "No",
+    toilet_positioning_required: "No",
+    fluid_dietary_changes_required: "No",
+    carer_education_required: "No",
+    gp_specialist_referral_required: "No",
+    nurse_continence_advisor_referral_required: "No",
+    continence_aids_required: "No",
+    mgt_plan_comments: "",
+    pad_trials: "",
+    pad_trial_results: "",
+    final_comments: "",
+    nurses_name: "",
+    nurse_designation: "",
   };
 
   handleChange = ({ target: { value, name } }) =>
@@ -87,10 +121,12 @@ class App extends Component {
     return (
       <div className="App">
         <div class="banner">
-          <h3 class="assessmentHeading">
-            COMMUNITY NURSING BLADDER ASSESSMENT
-          </h3>
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/australasia-ca07e.appspot.com/o/quantum-therapy%2Flogo%2Flogo-bg.jpg?alt=media&token=58a588a4-4a9d-48d2-9e7b-7125f8690616"
+            width="100%"
+          />
         </div>
+
         <br />
         <fieldset>
           <div class="form-row">
@@ -243,7 +279,7 @@ class App extends Component {
               </select>
             </div>
           </div>
-          <div class="form-row">
+          <div class="form-row border_bottom">
             <div class="form-group col-md-12 item">
               <label for="presenting_problems">
                 How does your bladder problem affect your life:
@@ -594,7 +630,7 @@ class App extends Component {
                 </div>
               </div>
             </div>
-            <div class="form-row">
+            <div class="form-row ">
               <div class="form-group col-md-12 item">
                 <label for="medical_history_other">
                   Other Medical conditions:
@@ -611,7 +647,7 @@ class App extends Component {
             </div>
           </div>
           <h6 class="heading">Surgical History:</h6>
-          <div class="form-row">
+          <div class="form-row border_bottom">
             <div class="form-group col-md-12 item">
               {/* <label for="surgical_history">Surgical History:</label> */}
               <textarea
@@ -625,7 +661,7 @@ class App extends Component {
             </div>
           </div>
           <h6 class="heading">Medications:</h6>
-          <div class="form-row">
+          <div class="form-row border_bottom">
             <div class="form-group col-md-12 item">
               {/* <label for="medications">Medications:</label> */}
               <textarea
@@ -638,7 +674,6 @@ class App extends Component {
               />
             </div>
           </div>
-
           <h5 class="heading">Bladder:</h5>
           <div class="form-row">
             <div class="form-group col-md-3 item">
@@ -703,234 +738,6 @@ class App extends Component {
               </div>
             </div>
           </div>
-          <div class="form-row">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">Type of Bladder Dysfunction</th>
-                  <th scope="col">Questions to ask the client</th>
-                  <th scope="col">Yes/No</th>
-                  <th scope="col">Amount of leakage</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Stress Incontinence</th>
-                  <td>
-                    <i>
-                      Do you leak when: cough, laugh or sneeze? go upstairs /
-                      downhill? get up from chair / bed?
-                    </i>
-                  </td>
-                  <td>
-                    <select
-                      name="stress_incontinence_confirmed"
-                      class="form-control"
-                      value={this.state.value}
-                      onChange={this.handleChange}
-                    >
-                      <option selected value="No">
-                        No
-                      </option>
-                      <option value="Symptoms evident">Yes</option>
-                    </select>
-                  </td>
-                  <td>
-                    <select
-                      name="stress_incontinence_leakage"
-                      class="form-control"
-                      value={this.state.value}
-                      onChange={this.handleChange}
-                    >
-                      <option selected value="None">
-                        None
-                      </option>
-                      <option value="Small">Small</option>
-                      <option value="Moderate">Moderate</option>
-                      <option value="Large">Large</option>
-                    </select>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Overactive Bladder & Urge Incontinence</th>
-                  <td>
-                    <i>
-                      How long can you hold on after you feel a desire to void?
-                      Do you the feel an urgent desire to void when you hear
-                      water running or put you key in the door? Is the desire so
-                      great that you would leak if you did not go to the toilet?
-                    </i>
-                  </td>
-                  <td>
-                    <select
-                      name="overactive_bladder_confirmed"
-                      class="form-control"
-                      value={this.state.value}
-                      onChange={this.handleChange}
-                    >
-                      <option selected value="No">
-                        No
-                      </option>
-                      <option value="Symptoms evident">Yes</option>
-                    </select>
-                  </td>
-                  <td>
-                    <select
-                      name="overactive_bladder_leakage"
-                      class="form-control"
-                      value={this.state.value}
-                      onChange={this.handleChange}
-                    >
-                      <option selected value="None">
-                        None
-                      </option>
-                      <option value="Small">Small</option>
-                      <option value="Moderate">Moderate</option>
-                      <option value="Large">Large</option>
-                    </select>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Nocturnal Enuresis</th>
-                  <td>
-                    <i>Do you wet the bed? If yes, how often?</i>
-                  </td>
-                  <td>
-                    <select
-                      name="nocturnal_enuresis_confirmed"
-                      class="form-control"
-                      value={this.state.value}
-                      onChange={this.handleChange}
-                    >
-                      <option selected value="No">
-                        No
-                      </option>
-                      <option value="Symptoms evident">Yes</option>
-                    </select>
-                  </td>
-                  <td>
-                    <select
-                      name="nocturnal_enuresis_leakage"
-                      class="form-control"
-                      value={this.state.value}
-                      onChange={this.handleChange}
-                    >
-                      <option selected value="None">
-                        None
-                      </option>
-                      <option value="Small">Small</option>
-                      <option value="Moderate">Moderate</option>
-                      <option value="Large">Large</option>
-                    </select>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Overflow Incontinence</th>
-                  <td>
-                    <i>
-                      Do you know when urine is leaking? Are you wet all the
-                      time? Do you completely empty your bladder? Is your stream
-                      slow to start Do you have to strain to pass urine?
-                    </i>
-                  </td>
-                  <td>
-                    <select
-                      name="overflow_incontinence_confirmed"
-                      class="form-control"
-                      value={this.state.value}
-                      onChange={this.handleChange}
-                    >
-                      <option selected value="No">
-                        No
-                      </option>
-                      <option value="Symptoms evident">Yes</option>
-                    </select>
-                  </td>
-                  <td>
-                    <select
-                      name="overflow_incontinence_leakage"
-                      class="form-control"
-                      value={this.state.value}
-                      onChange={this.handleChange}
-                    >
-                      <option selected value="None">
-                        None
-                      </option>
-                      <option value="Small">Small</option>
-                      <option value="Moderate">Moderate</option>
-                      <option value="Large">Large</option>
-                    </select>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Reflex Incontinence </th>
-                  <td>Does your bladder empty without warning?</td>
-                  <td>
-                    <select
-                      name="reflex_incontinence_confirmed"
-                      class="form-control"
-                      value={this.state.value}
-                      onChange={this.handleChange}
-                    >
-                      <option selected value="No">
-                        No
-                      </option>
-                      <option value="Symptoms evident">Yes</option>
-                    </select>
-                  </td>
-                  <td>
-                    <select
-                      name="reflex_incontinence_leakage"
-                      class="form-control"
-                      value={this.state.value}
-                      onChange={this.handleChange}
-                    >
-                      <option selected value="None">
-                        None
-                      </option>
-                      <option value="Small">Small</option>
-                      <option value="Moderate">Moderate</option>
-                      <option value="Large">Large</option>
-                    </select>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Post Micturition Dribbling</th>
-                  <td>
-                    <i>Do you leak immediately after voiding?</i>
-                  </td>
-                  <td>
-                    <select
-                      name="pmd_confirmed"
-                      class="form-control"
-                      value={this.state.value}
-                      onChange={this.handleChange}
-                    >
-                      <option selected value="No">
-                        No
-                      </option>
-                      <option value="Symptoms evident">Yes</option>
-                    </select>
-                  </td>
-                  <td>
-                    <select
-                      name="pmd_leakage"
-                      class="form-control"
-                      value={this.state.value}
-                      onChange={this.handleChange}
-                    >
-                      <option selected value="None">
-                        None
-                      </option>
-                      <option value="Small">Small</option>
-                      <option value="Moderate">Moderate</option>
-                      <option value="Large">Large</option>
-                    </select>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
           <h6 class="heading">Toileting Function:</h6>
           <div class="form-row">
             <div class="form-group col-md-12 item">
@@ -960,7 +767,6 @@ class App extends Component {
             </div>
           </div>
           <h6 class="heading">Fluid Balance</h6>
-
           <div class="form-row">
             <div class="form-group col-md-3 item">
               <label for="fname">Fluid Restriction:</label>
@@ -993,7 +799,6 @@ class App extends Component {
             </div>
           </div>
           <h6 class="heading">Fluid Input - 24hrs:</h6>
-
           <div class="form-row">
             <div class="form-group col-md-3 item">
               <label for="fname">Caffeine Drinks (mls):</label>
@@ -1052,7 +857,6 @@ class App extends Component {
             </div>
           </div>
           <h6 class="heading">Fluid Output - 24hrs:</h6>
-
           <div class="form-row">
             <div class="form-group col-md-3 item">
               <label for="urine_frequency">Frequency:</label>
@@ -1110,9 +914,236 @@ class App extends Component {
               />
             </div>
           </div>
-
+          <div class="form-row border_bottom">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Type of Bladder Dysfunction</th>
+                  <th scope="col">Questions to ask the client</th>
+                  <th scope="col">Yes/No</th>
+                  <th scope="col">Amount of leakage</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Stress Incontinence</th>
+                  <td>
+                    <i>
+                      Do you leak when: cough, laugh or sneeze? go upstairs /
+                      downhill? get up from chair / bed?
+                    </i>
+                  </td>
+                  <td>
+                    <select
+                      name="stress_incontinence_confirmed"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Evident">Yes</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select
+                      name="stress_incontinence_leakage"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="None">
+                        None
+                      </option>
+                      <option value="Small">Small</option>
+                      <option value="Moderate">Moderate</option>
+                      <option value="Large">Large</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Overactive Bladder & Urge Incontinence</th>
+                  <td>
+                    <i>
+                      How long can you hold on after you feel a desire to void?
+                      Do you the feel an urgent desire to void when you hear
+                      water running or put you key in the door? Is the desire so
+                      great that you would leak if you did not go to the toilet?
+                    </i>
+                  </td>
+                  <td>
+                    <select
+                      name="overactive_bladder_confirmed"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Evident">Yes</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select
+                      name="overactive_bladder_leakage"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="None">
+                        None
+                      </option>
+                      <option value="Small">Small</option>
+                      <option value="Moderate">Moderate</option>
+                      <option value="Large">Large</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Nocturnal Enuresis</th>
+                  <td>
+                    <i>Do you wet the bed? If yes, how often?</i>
+                  </td>
+                  <td>
+                    <select
+                      name="nocturnal_enuresis_confirmed"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Evident">Yes</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select
+                      name="nocturnal_enuresis_leakage"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="None">
+                        None
+                      </option>
+                      <option value="Small">Small</option>
+                      <option value="Moderate">Moderate</option>
+                      <option value="Large">Large</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Overflow Incontinence</th>
+                  <td>
+                    <i>
+                      Do you know when urine is leaking? Are you wet all the
+                      time? Do you completely empty your bladder? Is your stream
+                      slow to start Do you have to strain to pass urine?
+                    </i>
+                  </td>
+                  <td>
+                    <select
+                      name="overflow_incontinence_confirmed"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Evident">Yes</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select
+                      name="overflow_incontinence_leakage"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="None">
+                        None
+                      </option>
+                      <option value="Small">Small</option>
+                      <option value="Moderate">Moderate</option>
+                      <option value="Large">Large</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Reflex Incontinence </th>
+                  <td>Does your bladder empty without warning?</td>
+                  <td>
+                    <select
+                      name="reflex_incontinence_confirmed"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Evident">Yes</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select
+                      name="reflex_incontinence_leakage"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="None">
+                        None
+                      </option>
+                      <option value="Small">Small</option>
+                      <option value="Moderate">Moderate</option>
+                      <option value="Large">Large</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Post Micturition Dribbling</th>
+                  <td>
+                    <i>Do you leak immediately after voiding?</i>
+                  </td>
+                  <td>
+                    <select
+                      name="pmd_confirmed"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Evident">Yes</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select
+                      name="pmd_leakage"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="None">
+                        None
+                      </option>
+                      <option value="Small">Small</option>
+                      <option value="Moderate">Moderate</option>
+                      <option value="Large">Large</option>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <h5 class="heading">Mobility:</h5>
-          <div class="form-row">
+          <div class="form-row border_bottom">
             <div class="form-group col-md-3 item">
               <label for="mobility">Function:</label>
               <select
@@ -1183,7 +1214,7 @@ class App extends Component {
             </div>
           </div>
           <h6 class="heading">Environmental Barriers:</h6>
-          <div class="form-row">
+          <div class="form-row border_bottom">
             <div class="form-group col-md-12 item">
               {/* <label for="medications">Medications:</label> */}
               <textarea
@@ -1194,6 +1225,593 @@ class App extends Component {
                 //required
                 onChange={this.handleChange}
               />
+            </div>
+          </div>
+          <h5 class="heading">Bowels:</h5>
+          <div class="form-row center">
+            <h6 class="heading">Bristol Stool Form Scale</h6>
+
+            <img src={stool} width="80%" />
+          </div>
+          <h6 class="heading">Bowel Symptoms:</h6>
+          <div class="form-row">
+            <p class="margin-left">
+              ** If yes to any of the following - please perform bowel
+              assessment. Refer to Bristol Stool Form Scale Table for Stool
+              Type.
+            </p>
+
+            <div class="form-group col-md-3 item">
+              <label for="faecal_soiling">Faecal soiling:</label>
+              <select
+                name="faecal_soiling"
+                class="form-control"
+                value={this.state.value}
+                onChange={this.handleChange}
+              >
+                {/* <option selected value="unselected" disabled /> */}
+                <option value="Yes">Yes</option>
+                <option selected value="No">
+                  No
+                </option>
+              </select>
+            </div>
+            <div class="form-group col-md-3 item">
+              <label for="faecal_incontinence">Faecal incontinence:</label>
+              <select
+                name="faecal_incontinence"
+                class="form-control"
+                value={this.state.value}
+                onChange={this.handleChange}
+              >
+                {/* <option selected value="unselected" disabled /> */}
+                <option value="Yes">Yes</option>
+                <option selected value="No">
+                  No
+                </option>
+              </select>
+            </div>
+            <div class="form-group col-md-3 item">
+              <label for="stool_type">Usual stool type:</label>
+              <select
+                name="stool_type"
+                class="form-control"
+                value={this.state.value}
+                onChange={this.handleChange}
+              >
+                <option value="Type 1">Type 1</option>
+                <option value="Type 2">Type 2</option>
+                <option value="Type 3">Type 3</option>
+                <option selected value="Type 4">
+                  Type 4
+                </option>
+                <option value="Type 5">Type 5</option>
+                <option value="Type 6">Type 6</option>
+                <option value="Type 7">Type 7</option>
+              </select>
+            </div>
+          </div>
+          <h6 class="heading">Other Bowel Symptoms:</h6>
+          <div class="form-row border_bottom">
+            <div class="form-group col-md-12 item">
+              {/* <label for="medications">Medications:</label> */}
+              <textarea
+                class="form-control"
+                rows="3"
+                id="other_bowel_symptoms"
+                name="other_bowel_symptoms"
+                //required
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+          <h5 class="heading">Physical Examination:</h5>
+          <br />
+          <h6 class="heading">
+            Skin Condition (perineum, groin, thighs, buttocks):
+          </h6>
+          <div class="form-row">
+            <div class="form-group col-md-3 item">
+              <label for="skin_condition">Details:</label>
+              <input
+                class="form-control"
+                id="skin_condition"
+                type="text"
+                name="skin_condition"
+                //required
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+          <h6 class="heading">Comments:</h6>
+          <div class="form-row border_bottom">
+            <div class="form-group col-md-12 item">
+              {/* <label for="medications">Comments:</label> */}
+              <textarea
+                class="form-control"
+                rows="3"
+                id="skin_condition_comments"
+                name="skin_condition_comments"
+                //required
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+          <h6 class="heading ">Urogenital Examination:</h6>
+          <div class="form-row ">
+            <div class="form-group col-md-3 item">
+              <label for="Males">Males:</label>
+              <input
+                class="form-control"
+                id="urogenital_examination_males"
+                type="text"
+                name="urogenital_examination_males"
+                //required
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+          <h6 class="heading">Comments:</h6>
+          <div class="form-row border_bottom">
+            <div class="form-group col-md-12 item">
+              {/* <label for="medications">Comments:</label> */}
+              <textarea
+                class="form-control"
+                rows="3"
+                id="urogenital_exam_comments"
+                name="urogenital_exam_comments"
+                //required
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+          <div class="form-row border_bottom">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    Check for transient causes of incontinence (“PRAISED”):
+                  </th>
+                  <th scope="col">Yes/No/NA</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">
+                    Pharmaceutical. Psychology – causing depression, grief,
+                    anxiety
+                  </th>
+
+                  <td>
+                    <select
+                      name="pharmaceutical_incontinence"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Restricted mobility, retention</th>
+                  <td>
+                    <select
+                      name="restricted_mobility_incontinence"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Atrophic urethritis or atrophic vaginitis</th>
+
+                  <td>
+                    <select
+                      name="atrophic"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Infection - urinary (symptomatic)</th>
+                  <td>
+                    <select
+                      name="infection_incontinence"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Stool impaction </th>
+                  <td>
+                    <select
+                      name="stool_impaction_incontinence"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    Excessive urine output caused by endocrine/cardiovascular
+                    disorder, excessive fluid intake and pedal oedema
+                  </th>
+
+                  <td>
+                    <select
+                      name="euo_incontinence"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    Dehydration. Delirium and other confusional states
+                  </th>
+                  <td>
+                    <select
+                      name="dehydration_incontinence"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h6 class="heading">Comments:</h6>
+          <div class="form-row border_bottom">
+            <div class="form-group col-md-12 item">
+              {/* <label for="medications">Comments:</label> */}
+              <textarea
+                class="form-control"
+                rows="3"
+                id="praised_comments"
+                name="praised_comments"
+                //required
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+          <div class="form-row center border_bottom">
+            <div class="form-group col-md-3 item">
+              <label for="fname">Fluid Assessment fully completed today:</label>
+              <div class="input-group-prepend center">
+                <div class="input-group-text bigCheckbox">
+                  <input
+                    type="checkbox"
+                    aria-describedby="label_39"
+                    class="form-checkbox"
+                    id="input_39_0"
+                    name="assessment_completed"
+                    value="checked"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <label for="odor">Yes</label>
+              </div>
+            </div>
+          </div>
+          <div class="flex center">
+            <h5 class="heading center">Management Plan:</h5>
+          </div>
+          <div class="form-row ">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Interventions Required:</th>
+                  <th scope="col">Yes/No/NA</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Bladder Training</th>
+
+                  <td>
+                    <select
+                      name="bladder_training_required"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Bowel Management</th>
+                  <td>
+                    <select
+                      name="bowel_management_required"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Advise re:“good bladder habits”</th>
+
+                  <td>
+                    <select
+                      name="good_bladder_habits_required"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Prompted Toileting</th>
+                  <td>
+                    <select
+                      name="prompted_toileting_required"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Toilet positioning for bladder emptying</th>
+                  <td>
+                    <select
+                      name="toilet_positioning_required"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Fluid/Dietary changes</th>
+
+                  <td>
+                    <select
+                      name="fluid_dietary_changes_required"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Carer Education</th>
+                  <td>
+                    <select
+                      name="carer_education_required"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Referral to GP/Specialist</th>
+                  <td>
+                    <select
+                      name="gp_specialist_referral_required"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Referral to Nurse Continence Advisor</th>
+                  <td>
+                    <select
+                      name="nurse_continence_advisor_referral_required"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Continence Aids</th>
+                  <td>
+                    <select
+                      name="continence_aids_required"
+                      class="form-control"
+                      value={this.state.value}
+                      onChange={this.handleChange}
+                    >
+                      <option selected value="No">
+                        No
+                      </option>
+                      <option value="Yes">Yes</option>
+                      <option value="Not Applicable">N/A</option>
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h6 class="heading">Other Comments:</h6>
+          <div class="form-row ">
+            <div class="form-group col-md-12 item">
+              {/* <label for="medications">Comments:</label> */}
+              <textarea
+                class="form-control"
+                rows="3"
+                id="mgt_plan_comments"
+                name="mgt_plan_comments"
+                //required
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+          <h6 class="heading">Trial of Pad/s:</h6>
+          <div class="form-row ">
+            <div class="form-group col-md-12 item">
+              {/* <label for="medications">Comments:</label> */}
+              <textarea
+                class="form-control"
+                rows="3"
+                id="pad_trials"
+                name="pad_trials"
+                //required
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+          <h6 class="heading">Result of Pad/s Trial:</h6>
+          <div class="form-row border_bottom">
+            <div class="form-group col-md-12 item">
+              {/* <label for="medications">Comments:</label> */}
+              <textarea
+                class="form-control"
+                rows="3"
+                id="pad_trial_results"
+                name="pad_trial_results"
+                //required
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+          <h6 class="heading">Final Comments:</h6>
+          <div class="form-row ">
+            <div class="form-group col-md-12 item">
+              {/* <label for="medications">Comments:</label> */}
+              <textarea
+                class="form-control"
+                rows="3"
+                id="final_comments"
+                name="final_comments"
+                //required
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-3 item">
+              <label for="bladder_diary_details">Nurse's Full Name:</label>
+              <input
+                class="form-control"
+                id="nurses_name"
+                type="text"
+                name="nurses_name"
+                //required
+                onChange={this.handleChange}
+              />
+            </div>
+            <div class="form-group col-md-3 item">
+              <label for="bladder_diary_complete">Nurse's Designation:</label>
+              <select
+                name="nurse_designation"
+                class="form-control"
+                value={this.state.value}
+                onChange={this.handleChange}
+              >
+                {/* <option selected value="unselected" disabled /> */}
+                <option selected value="Registered Nurse">
+                  Registered Nurse
+                </option>
+                <option value="Enrolled Nurse">Enrolled Nurse</option>
+              </select>
             </div>
           </div>
         </fieldset>
