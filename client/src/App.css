@@ -67,7 +67,7 @@ form {
 }
 .banner {
   position: relative;
-  height: 300px;
+  height: 500px;
   /* background-image: url("https://firebasestorage.googleapis.com/v0/b/australasia-ca07e.appspot.com/o/quantum-therapy%2Flogo%2Flogo-bg.jpg?alt=media&token=58a588a4-4a9d-48d2-9e7b-7125f8690616"); */
   background-size: cover;
   display: flex;
@@ -281,17 +281,10 @@ label {
 }
 
 @media (max-width: 993px) {
-  /* .col-sm { */
-  /* -ms-flex-preferred-size: 0; */
-  /* flex-basis: 1 !important; */
-  /* -ms-flex-positive: 1;
-    flex-grow: 1;
-    max-width: 100%; */
-  /* } */
-
-  /* .margin-left {
-    width: 60%;
-  } */
+  .banner {
+    /* position: relative; */
+    height: 100%;
+    }
 }
 
 @media (max-width: 768px) {

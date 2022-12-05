@@ -12,6 +12,11 @@ class App extends Component {
     bdate: 0,
     sex: "undefined",
     presenting_problems: "",
+    gradual: "",
+    sudden: "",
+    onset: "",
+    worsening: "",
+    how_affects_life: "",
     referral: "",
     high_cholesterol: "",
     stroke: "",
@@ -228,9 +233,10 @@ class App extends Component {
                 value={this.state.value}
                 onChange={this.handleChange}
               >
-                <option selected value="Undefined" disabled />
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
+                <option value="checked">Yes</option>
+                <option selected value="">
+                  No
+                </option>
               </select>
             </div>
             <div class="form-group col-md-3 item">
@@ -243,9 +249,10 @@ class App extends Component {
                 value={this.state.value}
                 onChange={this.handleChange}
               >
-                <option selected value="Undefined" disabled />
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
+                <option value="checked">Yes</option>
+                <option selected value="">
+                  No
+                </option>
               </select>
             </div>
             <div class="form-group col-md-3 item">
@@ -258,9 +265,10 @@ class App extends Component {
                 value={this.state.value}
                 onChange={this.handleChange}
               >
-                <option selected value="Undefined" disabled />
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
+                <option value="checked">Yes</option>
+                <option selected value="">
+                  No
+                </option>
               </select>
             </div>
             <div class="form-group col-md-3 item">
@@ -273,9 +281,10 @@ class App extends Component {
                 value={this.state.value}
                 onChange={this.handleChange}
               >
-                <option selected value="Undefined" disabled />
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
+                <option value="checked">Yes</option>
+                <option selected value="">
+                  No
+                </option>
               </select>
             </div>
           </div>
@@ -1228,9 +1237,9 @@ class App extends Component {
             </div>
           </div>
           <h5 class="heading">Bowels:</h5>
-          <div class="form-row center">
-            <h6 class="heading">Bristol Stool Form Scale</h6>
+          <h6 class="heading align-center">Bristol Stool Form Scale</h6>
 
+          <div class="form-row center">
             <img src={stool} width="80%" />
           </div>
           <h6 class="heading">Bowel Symptoms:</h6>
@@ -1250,8 +1259,8 @@ class App extends Component {
                 onChange={this.handleChange}
               >
                 {/* <option selected value="unselected" disabled /> */}
-                <option value="Yes">Yes</option>
-                <option selected value="No">
+                <option value="checked">Yes</option>
+                <option selected value="">
                   No
                 </option>
               </select>
@@ -1265,8 +1274,8 @@ class App extends Component {
                 onChange={this.handleChange}
               >
                 {/* <option selected value="unselected" disabled /> */}
-                <option value="Yes">Yes</option>
-                <option selected value="No">
+                <option value="checked">Yes</option>
+                <option selected value="">
                   No
                 </option>
               </select>

@@ -257,7 +257,7 @@
 
               <td class="title border-none"><img
                   src="https://firebasestorage.googleapis.com/v0/b/australasia-ca07e.appspot.com/o/quantum-therapy%2Flogo%2Flogo-bg.jpg?alt=media&token=58a588a4-4a9d-48d2-9e7b-7125f8690616"
-                  style="width:100%; max-width:156px;"></td>
+                  style="width:100%; "></td>
               <td class="border-none" class="margin-top">
                 Date: ${`${today.toLocaleDateString()}`}
                 Time: ${`${today.toLocaleTimeString()}`}
@@ -293,8 +293,37 @@
     <h3>Presenting Problems:</h3>
     <div class="align-justify">
       <p>${presenting_problems}</p>
-
     </div>
+
+    <h3>Is Condition:</h3>
+      <div class="left_col_25">
+        <div class="input-group mb-3 margin-left">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><input type="checkbox" aria-describedby="label_39" class="form-checkbox"
+                id="input_39_0" name="gradual" ${gradual}><label class="margin-left"
+                id="label_input_39_0" for="input_39_0">Gradual</label></div>
+          </div>
+          <div class="input-group-prepend">
+            <div class="input-group-text"><input type="checkbox" aria-describedby="label_39" class="form-checkbox"
+                id="input_39_0" name="sudden" ${sudden}><label class="margin-left" id="label_input_39_0"
+                for="input_39_0">Sudden</label></div>
+          </div>
+          <div class="input-group-prepend">
+            <div class="input-group-text"><input type="checkbox" aria-describedby="label_39" class="form-checkbox"
+                id="input_39_0" name="onset" ${onset}><label class="margin-left" id="label_input_39_0"
+                for="input_39_0">Onset</label></div>
+          </div>
+          <div class="input-group-prepend">
+            <div class="input-group-text"><input type="checkbox" aria-describedby="label_39" class="form-checkbox"
+                id="input_39_0" name="worsening" ${worsening}><label class="margin-left" id="label_input_39_0"
+                for="input_39_0">Worsening</label></div>
+          </div>
+        </div>
+      </div>
+      <h3>How does your bladder problem affect your life:</h3>
+      <div class="align-justify">
+        <p>${how_affects_life}</p>
+      </div>
     <h3 class="heading">Medical History:</h3>
     <div class="flex margin-left">
       <div class="left_col_25">
@@ -419,76 +448,7 @@
         aria-describedby="label_39" class="form-checkbox" id="input_39_0" name="urine_odor" ${urine_odor}><label
         class="margin-left-2" id="label_input_39_0" for="input_39_0">Offensive</label>
     </div>
-    <h3 class="heading">Bladder Dysfunction:</h3>
-    <div class="form-row">
-      <table class="table border">
-        <thead>
-          <tr>
-            <th class="align-center border_bottom" scope="col">Type of Bladder Dysfunction</th>
-            <th class="align-center border_bottom" scope="col">Symptoms</th>
-            <th class="align-center border_bottom" scope="col">Leakage Amount</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Stress Incontinence</th>
-
-            <td class="align-center">
-              ${stress_incontinence_confirmed}
-            </td>
-            <td class="align-center">
-              ${stress_incontinence_leakage}
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Overactive Bladder & Urge Incontinence</th>
-            <td class="align-center">
-              ${overactive_bladder_confirmed}
-            </td>
-            <td class="align-center">
-              ${overactive_bladder_leakage}
-            </td>
-          </tr>
-          <tr>
-            <th scope="row ">Nocturnal Enuresis</th>
-            <td class="align-center">
-              ${nocturnal_enuresis_confirmed}
-            </td>
-            <td class="align-center">
-              ${nocturnal_enuresis_leakage}
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Overflow Incontinence</th>
-            <td class="align-center">
-              ${overflow_incontinence_confirmed}
-            </td>
-            <td class="align-center">
-              ${overflow_incontinence_leakage}
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Reflex Incontinence </th>
-            <td class="align-center">
-              ${reflex_incontinence_confirmed}
-            </td>
-            <td class="align-center">
-              ${reflex_incontinence_leakage}
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Post Micturition Dribbling</th>
-            <td class="align-center">
-              ${pmd_confirmed}
-            </td>
-            <td class="align-center">
-              ${pmd_leakage}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
+    
     <h3 class="heading">Toileting Function:</h3>
     <div class="align-justify">
       <p>${toileting_function}</p>
@@ -498,13 +458,19 @@
     </div>
     <h3>Fluid Balance: </h3>
     <div class="align-left">
-      <p>Fluid Restriction: ${fluid_restriction}</p>
-      <p>Fluid Restriction Total: ${fluid_restriction_total}</p>
+      <div class="input-group mb-3 margin-left">
+        <div class="input-group-prepend">
+          <div class="input-group-text"><input type="checkbox" aria-describedby="label_39" class="form-checkbox"
+              id="input_39_0" name="fluid_restriction" ${fluid_restriction}><label class="margin-left"
+              id="label_input_39_0" for="input_39_0">Fluid Restriction</label>
+      <p>Fluid Restriction Total: ${fluid_restriction_total} mls</p>
+            </div>
+        </div>
+      </div>
     </div>
-
+   
     <div class="form-row">
       <table class="table border">
-
         <tr>
           <th class="border_bottom left_col_25 align-center" scope="col">Input Fluids</th>
           <th class="border_bottom left_col_25 align-center" scope="col">Volume (ml)</th>
@@ -585,7 +551,75 @@
         </tbody>
       </table>
     </div>
+    <h3 class="heading">Bladder Dysfunction:</h3>
+    <div class="form-row">
+      <table class="table border">
+        <thead>
+          <tr>
+            <th class="align-center border_bottom" scope="col">Type of Bladder Dysfunction</th>
+            <th class="align-center border_bottom" scope="col">Symptoms</th>
+            <th class="align-center border_bottom" scope="col">Leakage Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Stress Incontinence</th>
 
+            <td class="align-center">
+              ${stress_incontinence_confirmed}
+            </td>
+            <td class="align-center">
+              ${stress_incontinence_leakage}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Overactive Bladder & Urge Incontinence</th>
+            <td class="align-center">
+              ${overactive_bladder_confirmed}
+            </td>
+            <td class="align-center">
+              ${overactive_bladder_leakage}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row ">Nocturnal Enuresis</th>
+            <td class="align-center">
+              ${nocturnal_enuresis_confirmed}
+            </td>
+            <td class="align-center">
+              ${nocturnal_enuresis_leakage}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Overflow Incontinence</th>
+            <td class="align-center">
+              ${overflow_incontinence_confirmed}
+            </td>
+            <td class="align-center">
+              ${overflow_incontinence_leakage}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Reflex Incontinence </th>
+            <td class="align-center">
+              ${reflex_incontinence_confirmed}
+            </td>
+            <td class="align-center">
+              ${reflex_incontinence_leakage}
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Post Micturition Dribbling</th>
+            <td class="align-center">
+              ${pmd_confirmed}
+            </td>
+            <td class="align-center">
+              ${pmd_leakage}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <h3 class="heading">Mobility:</h3>
     <div class="align-left">
       <p>Function: ${mobility}</p>
@@ -607,7 +641,7 @@
     <div class="align-left">
       <p>Faecal Soiling: ${faecal_soiling}</p>
       <p>Faecal Incontinence: ${faecal_incontinence}</p>
-      <p>Stool type: ${stool_type}</p>
+      <p>Stool Type (As per Bristol Stool Form Scale): ${stool_type}</p>
       <p class="align-justify"> Other Bowel Symptoms: ${other_bowel_symptoms}</p>
     </div>
     <h3 class="heading">Physical Examination:</h3>
