@@ -258,25 +258,31 @@
               <td class="title border-none"><img
                   src="https://firebasestorage.googleapis.com/v0/b/australasia-ca07e.appspot.com/o/quantum-therapy%2Flogo%2Flogo-bg.jpg?alt=media&token=58a588a4-4a9d-48d2-9e7b-7125f8690616"
                   style="width:100%; "></td>
-              <td class="border-none" class="margin-top">
+              <td class="border-none" class="margin-top" style="width:50%;">
                 Date: ${`${today.toLocaleDateString()}`}
-                Time: ${`${today.toLocaleTimeString()}`}
               </td>
 
             </tr>
           </table>
+
         </td>
       </tr>
       <tr class="heading" class="border-none">
         <td colspan="2" class="border-none">COMMUNITY NURSING BLADDER ASSESSMENT</td>
       </tr>
+
+      <tr>
       <tr>
         <td class="border-none">
-          Surname: ${lastName}
+          <h3>Patient Information</h3>
         </td>
-        <td class="border-none">
-          DOB: ${bdate}
-        </td>
+      </tr>
+      <td class="border-none">
+        Surname: ${lastName}
+      </td>
+      <td class="border-none">
+        DOB: ${bdate}
+      </td>
       </tr>
       <tr>
         <td class="border-none">
@@ -296,34 +302,34 @@
     </div>
 
     <h3>Is Condition:</h3>
-      <div class="left_col_25">
-        <div class="input-group mb-3 margin-left">
-          <div class="input-group-prepend">
-            <div class="input-group-text"><input type="checkbox" aria-describedby="label_39" class="form-checkbox"
-                id="input_39_0" name="gradual" ${gradual}><label class="margin-left"
-                id="label_input_39_0" for="input_39_0">Gradual</label></div>
-          </div>
-          <div class="input-group-prepend">
-            <div class="input-group-text"><input type="checkbox" aria-describedby="label_39" class="form-checkbox"
-                id="input_39_0" name="sudden" ${sudden}><label class="margin-left" id="label_input_39_0"
-                for="input_39_0">Sudden</label></div>
-          </div>
-          <div class="input-group-prepend">
-            <div class="input-group-text"><input type="checkbox" aria-describedby="label_39" class="form-checkbox"
-                id="input_39_0" name="onset" ${onset}><label class="margin-left" id="label_input_39_0"
-                for="input_39_0">Onset</label></div>
-          </div>
-          <div class="input-group-prepend">
-            <div class="input-group-text"><input type="checkbox" aria-describedby="label_39" class="form-checkbox"
-                id="input_39_0" name="worsening" ${worsening}><label class="margin-left" id="label_input_39_0"
-                for="input_39_0">Worsening</label></div>
-          </div>
+    <div class="left_col_25">
+      <div class="input-group mb-3 margin-left">
+        <div class="input-group-prepend">
+          <div class="input-group-text"><input type="checkbox" aria-describedby="label_39" class="form-checkbox"
+              id="input_39_0" name="gradual" ${gradual}><label class="margin-left" id="label_input_39_0"
+              for="input_39_0">Gradual</label></div>
+        </div>
+        <div class="input-group-prepend">
+          <div class="input-group-text"><input type="checkbox" aria-describedby="label_39" class="form-checkbox"
+              id="input_39_0" name="sudden" ${sudden}><label class="margin-left" id="label_input_39_0"
+              for="input_39_0">Sudden</label></div>
+        </div>
+        <div class="input-group-prepend">
+          <div class="input-group-text"><input type="checkbox" aria-describedby="label_39" class="form-checkbox"
+              id="input_39_0" name="onset" ${onset}><label class="margin-left" id="label_input_39_0"
+              for="input_39_0">Onset</label></div>
+        </div>
+        <div class="input-group-prepend">
+          <div class="input-group-text"><input type="checkbox" aria-describedby="label_39" class="form-checkbox"
+              id="input_39_0" name="worsening" ${worsening}><label class="margin-left" id="label_input_39_0"
+              for="input_39_0">Worsening</label></div>
         </div>
       </div>
-      <h3>How does your bladder problem affect your life:</h3>
-      <div class="align-justify">
-        <p>${how_affects_life}</p>
-      </div>
+    </div>
+    <h3>How does your bladder problem affect your life:</h3>
+    <div class="align-justify">
+      <p>${how_affects_life}</p>
+    </div>
     <h3 class="heading">Medical History:</h3>
     <div class="flex margin-left">
       <div class="left_col_25">
@@ -448,11 +454,12 @@
         aria-describedby="label_39" class="form-checkbox" id="input_39_0" name="urine_odor" ${urine_odor}><label
         class="margin-left-2" id="label_input_39_0" for="input_39_0">Offensive</label>
     </div>
-    
+
     <h3 class="heading">Toileting Function:</h3>
     <div class="align-justify">
       <p>${toileting_function}</p>
     </div>
+    <h3 class="heading">Incontinence aids currently used:</h3>
     <div class="align-justify">
       <p>${incontinence_aids}</p>
     </div>
@@ -463,12 +470,12 @@
           <div class="input-group-text"><input type="checkbox" aria-describedby="label_39" class="form-checkbox"
               id="input_39_0" name="fluid_restriction" ${fluid_restriction}><label class="margin-left"
               id="label_input_39_0" for="input_39_0">Fluid Restriction</label>
-      <p>Fluid Restriction Total: ${fluid_restriction_total} mls</p>
-            </div>
+            <p>Fluid Restriction Total: ${fluid_restriction_total} mls</p>
+          </div>
         </div>
       </div>
     </div>
-   
+
     <div class="form-row">
       <table class="table border">
         <tr>
@@ -629,6 +636,10 @@
     <div class="align-justify">
       <p>${cognitive_function}</p>
     </div>
+    <h3 class="heading">Communication:</h3>
+    <div class="align-justify">
+      <p>${communication}</p>
+    </div>
     <h3 class="heading">Hand Function:</h3>
     <div class="align-justify">
       <p>${hand_function}</p>
@@ -642,18 +653,22 @@
       <p>Faecal Soiling: ${faecal_soiling}</p>
       <p>Faecal Incontinence: ${faecal_incontinence}</p>
       <p>Stool Type (As per Bristol Stool Form Scale): ${stool_type}</p>
-      <p class="align-justify"> Other Bowel Symptoms: ${other_bowel_symptoms}</p>
+      <h4 class="heading">Other Bowel Symptoms:</h4>
+      <p class="align-justify">${other_bowel_symptoms}</p>
     </div>
     <h3 class="heading">Physical Examination:</h3>
     <div class="align-left">
       <h4 class="heading">Skin Condition:</h4>
       <p>Perineum, groin, thighs, buttocks: ${skin_condition}</p>
-      <p class="align-justify">Comments: ${skin_condition_comments}</p>
+      <h4 class="heading">Comments:</h4>
+
+      <p class="align-justify">${skin_condition_comments}</p>
     </div>
     <div class="align-left">
       <h4 class="heading">Urogenital Examination:</h4>
       <p>Male: ${urogenital_examination_males}</p>
-      <p class="align-justify">Comments: ${urogenital_exam_comments}</p>
+      <h4 class="heading">Comments:</h4>
+      <p class="align-justify">${urogenital_exam_comments}</p>
     </div>
     <h3 class="heading align-center">Transient causes of incontinence (PRAISED):</h3>
     <div class="form-row">
@@ -719,7 +734,8 @@
     </div>
     <br>
     <div class="align-left">
-      <p class="align-justify">Other Comments: ${praised_comments}</p>
+      <h4 class="heading">OtherComments:</h4>
+      <p class="align-justify">${praised_comments}</p>
     </div>
     <div class="align-center">
       <label id="label_input_39_0" for="input_39_0">Fluid Assessment fully completed today: </label><input

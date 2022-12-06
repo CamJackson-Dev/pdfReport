@@ -9,7 +9,7 @@ class App extends Component {
   state = {
     firstName: "",
     lastName: "",
-    bdate: 0,
+    bdate: undefined,
     sex: "undefined",
     presenting_problems: "",
     gradual: "",
@@ -70,6 +70,7 @@ class App extends Component {
     mobility: "Independant",
     mobility_details: "",
     cognitive_function: "",
+    communication: "",
     hand_function: "",
     environmental_barriers: "",
     faecal_soiling: "",
@@ -117,7 +118,7 @@ class App extends Component {
       .then((res) => {
         console.log(res.data);
         const pdfBlob = new Blob([res.data], { type: "application/pdf" });
-
+        console.log("pdfBlob", pdfBlob);
         saveAs(pdfBlob, "pt-report.pdf");
       });
   };
@@ -134,6 +135,8 @@ class App extends Component {
 
         <br />
         <fieldset>
+          <br />
+          <h6 class="heading">Patient Information:</h6>
           <div class="form-row">
             <div class="form-group col-md-3 item">
               <label for="fname">
@@ -1259,8 +1262,8 @@ class App extends Component {
                 onChange={this.handleChange}
               >
                 {/* <option selected value="unselected" disabled /> */}
-                <option value="checked">Yes</option>
-                <option selected value="">
+                <option value="Yes">Yes</option>
+                <option selected value="No">
                   No
                 </option>
               </select>
@@ -1274,8 +1277,8 @@ class App extends Component {
                 onChange={this.handleChange}
               >
                 {/* <option selected value="unselected" disabled /> */}
-                <option value="checked">Yes</option>
-                <option selected value="">
+                <option value="Yes">Yes</option>
+                <option selected value="No">
                   No
                 </option>
               </select>
