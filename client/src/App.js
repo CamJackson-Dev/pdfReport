@@ -113,7 +113,7 @@ class App extends Component {
 
   createAndDownloadPdf = () => {
     const api = axios.create({
-      baseURL: "https://pdf-report-api.vercel.app/",
+      baseURL: "https://pdf-report-api.vercel.app",
     });
 
     api
