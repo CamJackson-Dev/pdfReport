@@ -12,6 +12,27 @@ const port = process.env.PORT || 5001;
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.all("*", function (req, res, next) {
+  // console.log(req.header("Authorization"));
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,content-type,Authorization ,Accept"
+  );
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.setHeader("Access-Control-Expose-Headers", "Authorization");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,content-type, Authorization"
+  );
+
+  // console.log(req.header("Authorization"));
+  next();
+});
 
 app.post("/create-pdf", cors(), (req, res) => {
   // res.setHeader("Access-Control-Allow-Origin", "*");
