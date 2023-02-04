@@ -30,16 +30,16 @@ app.get("/fetch-pdf", (req, res) => {
 });
 
 // 405 & 404 error catcher
-app.use("", (req, _, next) => {
-  const err = buildError(app, req);
-  if (!err) return next();
-  return next(err);
-});
-// 405 & 404 error catcher
+// app.use("", (req, _, next) => {
+//   const err = buildError(app, req);
+//   if (!err) return next();
+//   return next(err);
+// });
+// // 405 & 404 error catcher
 
-// Error handling
-app.use((err, _, res, __) =>
-  res.status(err.status).json({ message: err.message })
-);
+// // Error handling
+// app.use((err, _, res, __) =>
+//   res.status(err.status).json({ message: err.message })
+// );
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
