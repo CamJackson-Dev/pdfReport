@@ -13,7 +13,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.post("/create-pdf", (req, res) => {
+app.post("/create-pdf", cors(), (req, res) => {
   // res.setHeader("Access-Control-Allow-Origin", "*");
   // res.setHeader("Access-Control-Allow-Methods", "GET, POST");
   pdf.create(pdfTemplate(req.body), {}).toFile("result.pdf", (err) => {
@@ -35,11 +35,11 @@ app.get("/fetch-pdf", (req, res) => {
 //   if (!err) return next();
 //   return next(err);
 // });
-// 405 & 404 error catcher
+// // 405 & 404 error catcher
 
-// Error handling
-app.use((err, _, res, __) =>
-  res.status(err.status).json({ message: err.message })
-);
+// // Error handling
+// app.use((err, _, res, __) =>
+//   res.status(err.status).json({ message: err.message })
+// );
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
