@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import axios from "axios";
 import { saveAs } from "file-saver";
 import stool from "./assets/Bristol-Stool-Form.png";
-
 import "./App.css";
+
+console.log("REACT_APP_BASE_URL: ", process.env.REACT_APP_BASE_URL);
 
 class App extends Component {
   state = {
@@ -112,7 +113,11 @@ class App extends Component {
     this.setState({ [name]: value });
 
   createAndDownloadPdf = () => {
-    axios
+    const api = axios.create({
+      baseURL: process.env.REACT_APP_BASE_URL || "http://localhost:5001",
+    });
+
+    api
       .post("/create-pdf", this.state)
       .then(() => axios.get("/fetch-pdf", { responseType: "blob" }))
       .then((res) => {
