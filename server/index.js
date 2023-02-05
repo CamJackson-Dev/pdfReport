@@ -2,16 +2,12 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const pdf = require("html-pdf");
 const cors = require("cors");
-const https = require("https");
+
 const pdfTemplate = require("./documents/index");
 
 const app = express();
 
 const port = process.env.PORT || 5001;
-// const port = process.env.PORT;
-https.createServer(app).listen(4000, () => {
-  console.log("server is runing at port 4000");
-});
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -39,11 +35,11 @@ app.get("/fetch-pdf", (req, res) => {
 //   if (!err) return next();
 //   return next(err);
 // });
-// // 405 & 404 error catcher
+// 405 & 404 error catcher
 
-// // Error handling
-// app.use((err, _, res, __) =>
-//   res.status(err.status).json({ message: err.message })
-// );
+// Error handling
+app.use((err, _, res, __) =>
+  res.status(err.status).json({ message: err.message })
+);
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
