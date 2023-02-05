@@ -6,9 +6,7 @@ const cors = require("cors");
 const pdfTemplate = require("./documents/index");
 
 const app = express();
-const dotenv = require("dotenv");
-dotenv.config();
-console.log("process.env.REACT_APP_BASE_URL", process.env.REACT_APP_BASE_URL);
+
 const port = process.env.REACT_APP_PORT || 5001;
 
 app.use(cors());
