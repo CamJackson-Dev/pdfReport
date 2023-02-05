@@ -13,7 +13,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.post("/create-pdf", cors(), (req, res) => {
+app.post("/create-pdf", (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST");
   pdf.create(pdfTemplate(req.body), {}).toFile("result.pdf", (err) => {
