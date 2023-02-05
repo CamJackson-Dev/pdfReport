@@ -4,16 +4,19 @@ const pdf = require("html-pdf");
 const cors = require("cors");
 const https = require("https");
 const pdfTemplate = require("./documents/index");
-const options = "";
+
 const app = express();
 
 const port = process.env.PORT || 5001;
 // const port = process.env.PORT;
+https.createServer(app).listen(4000, () => {
+  console.log("server is runing at port 4000");
+});
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-https.createServer(options, app).listen(443);
+
 app.post("/create-pdf", (req, res) => {
   // res.setHeader("Access-Control-Allow-Origin", "*");
   // res.setHeader("Access-Control-Allow-Methods", "GET, POST");
