@@ -116,10 +116,10 @@ class App extends Component {
     const api = axios.create({
       baseURL: process.env.REACT_APP_BASE_URL || "http://localhost:5001",
     });
-
+    console.log("baseURL", axios.baseURL);
     api
       .post("/create-pdf", this.state)
-      .then(() => axios.get("/fetch-pdf", { responseType: "blob" }))
+      .then(() => api.get("/fetch-pdf", { responseType: "blob" }))
       .then((res) => {
         console.log(res.data);
         const pdfBlob = new Blob([res.data], { type: "application/pdf" });
