@@ -117,6 +117,7 @@ class App extends Component {
     // https://pdf-report-client.vercel.app/
     let config = {
       headers: {
+        "Content-Type": "application/json;charset=UTF-8",
         "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE",
       },
     };
