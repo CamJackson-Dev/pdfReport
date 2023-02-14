@@ -130,7 +130,7 @@ class App extends Component {
 
     api
       .post("/create-pdf", data, config)
-      .then(() => api.get("/fetch-pdf", { responseType: "blob" }))
+      .then(() => axios.get("/fetch-pdf", { responseType: "blob" }))
       .then((res) => {
         console.log(res.data);
         const pdfBlob = new Blob([res.data], { type: "application/pdf" });
