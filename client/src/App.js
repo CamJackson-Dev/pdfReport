@@ -125,7 +125,9 @@ class App extends Component {
     const api = axios.create({
       baseURL: "https://pdf-report.vercel.app/",
     });
-    // console.log("baseURL", axios.baseURL);
+    console.log("data", data);
+    console.log("config", config);
+
     api
       .post("/create-pdf", data, config)
       .then(() => api.get("/fetch-pdf", { responseType: "blob" }))
