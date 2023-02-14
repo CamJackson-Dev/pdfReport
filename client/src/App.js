@@ -114,10 +114,11 @@ class App extends Component {
 
   // https://pdf-report-client.vercel.app/
   createAndDownloadPdf = () => {
+    var data = this.state;
     // https://pdf-report-client.vercel.app/
     let config = {
       headers: {
-        "Content-Type": "application/json;charset=UTF-8",
+        "Content-Type": "application/json",
         "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE",
       },
     };
@@ -126,7 +127,7 @@ class App extends Component {
     });
     // console.log("baseURL", axios.baseURL);
     api
-      .post("/create-pdf", this.state, config)
+      .post("/create-pdf", data, config)
       .then(() => api.get("/fetch-pdf", { responseType: "blob" }))
       .then((res) => {
         console.log(res.data);
