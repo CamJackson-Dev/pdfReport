@@ -112,11 +112,12 @@ class App extends Component {
   handleChange = ({ target: { value, name } }) =>
     this.setState({ [name]: value });
 
+  // https://pdf-report-client.vercel.app/
   createAndDownloadPdf = () => {
     const api = axios.create({
-      baseURL: process.env.REACT_APP_BASE_URL || "http://localhost:5001",
+      baseURL: "http://localhost:3000/",
     });
-    console.log("baseURL", axios.baseURL);
+    // console.log("baseURL", axios.baseURL);
     api
       .post("/create-pdf", this.state)
       .then(() => api.get("/fetch-pdf", { responseType: "blob" }))
