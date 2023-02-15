@@ -46,10 +46,6 @@ app.use(bodyParser.json());
 // });
 
 app.post("/create-pdf", (req, res) => {
-  res.setHeader("Content-Type", "application/json");
-  res.setHeader("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-  res.setHeader("Access-Control-Allow-Origin", "*");
-
   pdf.create(pdfTemplate(req.body), {}).toFile("result.pdf", (err) => {
     if (err) {
       res.send(Promise.reject());
