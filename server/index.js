@@ -35,6 +35,9 @@ app.use(bodyParser.json());
 // });
 
 app.post("/create-pdf", (req, res) => {
+  console.log("req", req);
+  console.log("res", res);
+
   pdf.create(pdfTemplate(req.body), {}).toFile("result.pdf", (err) => {
     if (err) {
       res.send(Promise.reject());
