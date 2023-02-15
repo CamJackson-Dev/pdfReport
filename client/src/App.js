@@ -123,7 +123,7 @@ class App extends Component {
     //   },
     // };
     const api = axios.create({
-      baseURL: "https://pdf-report.vercel.app/",
+      baseURL: "https://pdf-report.vercel.app",
     });
     // console.log("data", data);
     // console.log("config", config);
