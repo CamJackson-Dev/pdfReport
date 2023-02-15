@@ -9,21 +9,29 @@ const app = express();
 
 const port = process.env.REACT_APP_PORT || 5001;
 
-// app.use(cors());
-app.use(function (req, res, next) {
-  res.header(
-    "Access-Control-Allow-Origin",
-    "https://pdf-report-client.vercel.app/"
-  ); // update to match the domain you will make the request from
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-  next();
-});
+app.use(cors());
+// app.use(function (req, res, next) {
+//   res.header(
+//     "Access-Control-Allow-Origin",
+//     "https://pdf-report-client.vercel.app/"
+//   ); // update to match the domain you will make the request from
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+//   next();
+// });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use((req, res, next) => {
+  res.append("Access-Control-Allow-Origin", [
+    "https://pdf-report-client.vercel.app/",
+  ]);
+  res.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  res.append("Access-Control-Allow-Headers", "Content-Type");
+  next();
+});
 
 app.post("/create-pdf", (req, res) => {
   console.log("req", req);
