@@ -24,18 +24,22 @@ app.use(cors());
 // });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use((req, res, next) => {
-  res.append("Access-Control-Allow-Origin", [
-    "https://pdf-report-client.vercel.app/",
-  ]);
-  res.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-  res.append("Access-Control-Allow-Headers", "Content-Type");
-  next();
-});
+// app.use((req, res, next) => {
+//   res.append("Access-Control-Allow-Origin", [
+//     "https://pdf-report-client.vercel.app/",
+//   ]);
+//   res.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+//   res.append("Access-Control-Allow-Headers", "Content-Type");
+//   next();
+// });
 
 app.post("/create-pdf", (req, res) => {
-  console.log("req", req);
-  console.log("res", res);
+  res.setHeader("Content-Type", "application/json");
+  res.setHeader("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://pdf-report-client.vercel.app/"
+  );
 
   pdf.create(pdfTemplate(req.body), {}).toFile("result.pdf", (err) => {
     if (err) {
