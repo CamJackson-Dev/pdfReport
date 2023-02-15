@@ -10,6 +10,18 @@ const app = express();
 const port = process.env.REACT_APP_PORT || 5001;
 
 app.use(cors());
+//CORS middleware
+var allowCrossDomain = function (req, res, next) {
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://pdf-report-client.vercel.app/"
+  );
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+
+  next();
+};
+app.use(allowCrossDomain);
 // app.use(function (req, res, next) {
 //   res.header(
 //     "Access-Control-Allow-Origin",
