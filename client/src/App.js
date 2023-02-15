@@ -122,15 +122,15 @@ class App extends Component {
     //     "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE",
     //   },
     // };
-    // const api = axios.create({
-    //   baseURL: "https://pdf-report.vercel.app/",
-    // });
+    const api = axios.create({
+      baseURL: "https://pdf-report.vercel.app/",
+    });
     // console.log("data", data);
     // console.log("config", config);
 
-    axios
+    api
       .post("/create-pdf", data)
-      .then(() => axios.get("/fetch-pdf", { responseType: "blob" }))
+      .then(() => api.get("/fetch-pdf", { responseType: "blob" }))
       .then((res) => {
         console.log(res.data);
         const pdfBlob = new Blob([res.data], { type: "application/pdf" });
@@ -145,6 +145,7 @@ class App extends Component {
         <div class="banner">
           <img
             src="https://firebasestorage.googleapis.com/v0/b/australasia-ca07e.appspot.com/o/quantum-therapy%2Flogo%2Flogo-bg.jpg?alt=media&token=58a588a4-4a9d-48d2-9e7b-7125f8690616"
+            alt=""
             width="100%"
           />
         </div>
