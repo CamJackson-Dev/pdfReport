@@ -122,13 +122,13 @@ class App extends Component {
         "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE",
       },
     };
-    // const api = axios.create({
-    //   baseURL: "https://pdf-report-client.vercel.app/",
-    // });
+    const api = axios.create({
+      baseURL: "https://pdf-report.vercel.app/",
+    });
     console.log("data", data);
     console.log("config", config);
 
-    axios
+    api
       .post("/create-pdf", data, config)
       .then(() => axios.get("/fetch-pdf", { responseType: "blob" }))
       .then((res) => {
