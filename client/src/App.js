@@ -4,7 +4,7 @@ import { saveAs } from "file-saver";
 import stool from "./assets/Bristol-Stool-Form.png";
 import "./App.css";
 
-console.log("REACT_APP_BASE_URL: ", process.env.REACT_APP_BASE_URL);
+// console.log("REACT_APP_BASE_URL: ", process.env.REACT_APP_BASE_URL);
 
 class App extends Component {
   state = {
