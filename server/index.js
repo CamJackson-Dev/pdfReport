@@ -9,7 +9,8 @@ const app = express();
 
 const port = process.env.REACT_APP_PORT || 5001;
 
-app.use(cors({ origin: "https://pdf-report-client.vercel.app/" })); // Allow requests from localhost:3000
+app.use(cors({ origin: "https://pdf-report-client.vercel.app" }));
+// Allow requests from localhost:3000
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
