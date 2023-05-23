@@ -5,5 +5,19 @@
       "src": "index.js",
       "use": "@vercel/node"
     }
+  ],
+  "routes": [
+    { "src": "/create-pdf", "dest": "index.js" },
+    { "src": "/fetch-pdf", "dest": "index.js" }
+  ],
+  "headers": [
+    {
+      "source": "/create-pdf",
+      "headers": [{ "key": "Access-Control-Allow-Origin", "value": "*" }]
+    },
+    {
+      "source": "/fetch-pdf",
+      "headers": [{ "key": "Access-Control-Allow-Origin", "value": "*" }]
+    }
   ]
 }
