@@ -118,6 +118,10 @@ class App extends Component {
 
     const api = axios.create({
       baseURL: "https://pdf-report.vercel.app", // Update the baseURL to match your server URL
+      headers: {
+        "Access-Control-Allow-Origin": "*", // Add this header to allow all origins
+        "Content-Type": "application/json", // Set the content type to JSON
+      },
     });
 
     api
