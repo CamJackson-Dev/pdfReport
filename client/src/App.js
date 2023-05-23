@@ -115,27 +115,29 @@ class App extends Component {
   // https://pdf-report-client.vercel.app/
   createAndDownloadPdf = () => {
     var data = this.state;
-    // https://pdf-report-client.vercel.app/
-    // let config = {
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE",
-    //   },
-    // };
+
     const api = axios.create({
-      baseURL: "https://pdf-report.vercel.app",
+      baseURL: "https://pdf-report.vercel.app/", // Update the baseURL to match your server URL
     });
-    // console.log("data", data);
-    // console.log("config", config);
 
     api
       .post("/create-pdf", data)
       .then(() => api.get("/fetch-pdf", { responseType: "blob" }))
       .then((res) => {
-        console.log(res.data);
+        console.log("PDF data:", res.data);
+
         const pdfBlob = new Blob([res.data], { type: "application/pdf" });
 
-        saveAs(pdfBlob, "pt-report.pdf");
+        // Verify the saveAs function
+        if (typeof saveAs === "function") {
+          saveAs(pdfBlob, "pt-report.pdf");
+          console.log("PDF downloaded successfully.");
+        } else {
+          console.error("saveAs function not found. PDF download failed.");
+        }
+      })
+      .catch((error) => {
+        console.error("PDF download error:", error);
       });
   };
 
