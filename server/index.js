@@ -11,7 +11,7 @@ const port = process.env.PORT || 5001;
 
 app.use(
   cors({
-    origin: "https://pdf-report-client-fj9e5td71-camjackson-dev.vercel.app",
+    origin: "*",
   })
 );
 
