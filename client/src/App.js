@@ -117,7 +117,7 @@ class App extends Component {
     var data = this.state;
 
     const api = axios.create({
-      baseURL: "https://pdf-report.vercel.app", // Update the baseURL to match your server URL
+      baseURL: "https://pdf-report-pqxbaugb2-camjackson-dev.vercel.app", // Update the baseURL to match your server URL
       headers: {
         "Access-Control-Allow-Origin": "*", // Add this header to allow all origins
         "Content-Type": "application/json", // Set the content type to JSON

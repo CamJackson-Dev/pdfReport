@@ -7,10 +7,14 @@ const pdfTemplate = require("./documents/index");
 
 const app = express();
 
-const port = process.env.REACT_APP_PORT || 5001;
+const port = process.env.PORT || 5001;
 
-app.use(cors({ origin: "https://pdf-report-client.vercel.app" }));
-// Allow requests from localhost:3000
+app.use(
+  cors({
+    origin: "https://pdf-report-client-fj9e5td71-camjackson-dev.vercel.app",
+  })
+);
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
