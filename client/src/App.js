@@ -117,7 +117,7 @@ class App extends Component {
     var data = this.state;
 
     const api = axios.create({
-      baseURL: "https://pdf-report.vercel.app/", // Update the baseURL to match your server URL
+      baseURL: "https://pdf-report.vercel.app", // Update the baseURL to match your server URL
     });
 
     api
